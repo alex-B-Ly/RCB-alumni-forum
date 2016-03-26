@@ -1,7 +1,4 @@
-RCB-alumni-forum
-first draft of README.md by Carolyn
-
-Rutgers Coding Bootcamp Alumni Forum
+# Rutgers Coding Bootcamp Alumni Forum
 
 This is a node.js forum application powered by Angular and Express. The central purpose of the RCB Alumni Forum is to provide a networking space that will encourage an ongoing dialogue between RCB Alumni as they search for internships, employment, become established in a new position, and continue to look for new opportunities.
 
