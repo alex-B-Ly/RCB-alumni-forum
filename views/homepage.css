@@ -1,0 +1,23 @@
+body{
+  background-color: white;
+}
+
+nav.navbar-default{
+  background-color: #e60000;
+}
+
+div.forum1 {
+    text-align: center;
+    height: 10em;
+    position: relative;
+    font-size: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);}
+
+div.forum2{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
