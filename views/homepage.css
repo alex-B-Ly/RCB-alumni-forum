@@ -1,0 +1,33 @@
+body{
+  background-color: white;
+  background-image: url("");
+}
+
+nav.navbar-default{
+  background-color: #e60000;
+}
+
+div.forum1 {
+    text-align: center;
+    height: 10em;
+    position: relative;
+    font-size: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);}
+
+div.forum2{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+/*experimentation*/
+html { 
+  background: url("http://www.business.rutgers.edu/sites/default/files/user_files/Rutgers-Business-School-Livingston-Campus-Back.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
