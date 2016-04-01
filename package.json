@@ -1,0 +1,24 @@
+{
+  "name": "rcb_alumni_forum",
+  "version": "1.0.0",
+  "description": "This is a node.js forum application powered by Angular and Express. The central purpose of the RCB Alumni Forum is to provide a networking space that will encourage an ongoing dialogue between RCB Alumni as they search for internships, employment, become established in a new position, and continue to look for new opportunities.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-B-Ly/RCB-alumni-forum.git"
+  },
+  "author": "Alex Ly, Carolyn Tevnan, Chris Campbell, Marco Sebello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-B-Ly/RCB-alumni-forum/issues"
+  },
+  "homepage": "https://github.com/alex-B-Ly/RCB-alumni-forum#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  }
+}
