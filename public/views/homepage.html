@@ -10,35 +10,37 @@
    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
   </head>
   <body>
-    <!-- begining of navbar section-->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><strong>RU</strong></a>
-    </div>
+  
+  <!-- begining of navbar section-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>RU</strong></a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="welcomepage.html"> WELCOME PAGE</a></li>
           <li><a href="messageboardpage.html">MESSAGE BOARD PAGE</a></li>
         </ul>
         <!-- Sign Up Button-->
-        <div class=text-right>
+        <!-- TODO FIX THIS WITH NAV RIGHT -->
+        <div class="navbar-right">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
           <!-- Log In Button-->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
         </div>
       </div>
-  </div>
-</nav>
+    </div>
+  </nav>
 
   <!--pop up sign up form-->
   <div class="modal fade" id="signupform">
