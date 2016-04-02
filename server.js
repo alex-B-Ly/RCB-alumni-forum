@@ -6,6 +6,7 @@ var PORT = process.env.PORT || 8080;
 
 var app = express();
 
+// MIDDLEWARE
 app.use(express.static('public'));
 
 app.use(logger('dev'));
@@ -15,10 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// app.get('*', function(req, res) {
-//   res.sendFile(process.cwd() + '/public/homepage.html');
-// });
-
+// ROUTES
 var routes = require('./controllers/router.js');
 app.use('/', routes);
 
