@@ -12,15 +12,25 @@ div.forum1 {
     height: 10em;
     position: relative;
     font-size: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  transform: translate(-50%, -50%);}
+    padding-top: 300px;
+ }
 
-div.forum2{
-  position: fixed;
-  bottom: 0;
-  right: 0;
+div.forum2 {
+  text-align: center;
+  position: relative;
+  font-size:100;
+  top:100px;
 }
+
+div.forum3 {
+  text-align: center;
+  position: relative;
+  font-size:100;
+  top:100px;
+}
+
+
+ 
+
 
 /*experimentation*/
