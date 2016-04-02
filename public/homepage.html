@@ -9,7 +9,7 @@
     <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
   </head>
-  <body ng-controller="homepageController">
+  <body ng-controller="homepageController as home">
 
   <!-- begining of navbar section-->
   <nav class="navbar navbar-default">
@@ -41,8 +41,6 @@
       </div>
     </div>
   </nav>
-
-  {{ dog }}
 
   <!--pop up sign up form-->
   <div class="modal fade" id="signupform">
@@ -76,6 +74,13 @@
             </div>
 
             <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Section </label>
+              <div class="col-md-5">
+                <input type="text" class="form-control input-sm" ng-model="registerSection">
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Password</label>
               <div class="col-md-5">
                 <input type="password" class="form-control input-sm" ng-model="registerPassword">
@@ -91,7 +96,7 @@
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit" ng-click="register()">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="register()">
               </div>
             </div>
 
@@ -128,7 +133,7 @@
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal">
               </div>
             </div>
 
