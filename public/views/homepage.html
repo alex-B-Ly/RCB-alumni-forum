@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THE RCB Alumni Forum</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
+   <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+  </head>
+  <body>
+  
+  <!-- begining of navbar section-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>RU</strong></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="welcomepage.html"> WELCOME PAGE</a></li>
+          <li><a href="messageboardpage.html">MESSAGE BOARD PAGE</a></li>
+        </ul>
+        <!-- Sign Up Button-->
+        <!-- TODO FIX THIS WITH NAV RIGHT -->
+        <div class="navbar-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
+          <!-- Log In Button-->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!--pop up sign up form-->
+  <div class="modal fade" id="signupform">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+          <h4 class="modal-title">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> First Name</label>
+              <div class="col-md-5">
+                <input type="text" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Last Name</label>
+              <div class="col-md-5">
+                <input type="text" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Email </label>
+              <div class="col-md-5">
+                <input type="email" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Password</label>
+              <div class="col-md-5">
+                <input type="password" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Confirm Password</label>
+              <div class="col-md-5">
+                <input type="password" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2 col-md-offset-8">
+                <input type="submit" class="btn btn-sucess" value="submit">
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop up Login Form -->
+  <div class="modal fade" id="loginform">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+          <h4 class="modal-title"> Log In</h4>
+        </div>
+        <div class="modal-body"> 
+          <form class="form-horizontal">
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Email </label>
+              <div class="col-md-5">
+                <input type="email" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Password</label>
+              <div class="col-md-5">
+                <input type="password" class="form-control input-sm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2 col-md-offset-8">
+                <input type="submit" class="btn btn-sucess" value="submit">
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="../js/homepage.js"></script>
+    <!--script src="js/bootstrap.min.js"></script>-->
+  </body>
+</html>
