@@ -24,10 +24,4 @@ div.forum2{
 }
 
 /*experimentation*/
-html { 
-  background: url("http://www.business.rutgers.edu/sites/default/files/user_files/Rutgers-Business-School-Livingston-Campus-Back.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
