@@ -24,7 +24,7 @@ var userSchema = new Schema({
     required: true
   },
   dateCreated: {
-    type: Date,
+    type: Date
   }
 });
 

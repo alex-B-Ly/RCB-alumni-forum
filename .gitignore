@@ -2,3 +2,5 @@
 node_modules
 npm-debug.log
 .env
+mockups/Message_board.bmpr
+mockups/index.bmpr
