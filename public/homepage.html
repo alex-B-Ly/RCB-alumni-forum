@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="homepage">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
   </head>
-  <body>
+  <body ng-controller="homepageController as home">
 
-  
+
   <!-- begining of navbar section-->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -56,28 +56,35 @@
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> First Name</label>
               <div class="col-md-5">
-                <input type="text" class="form-control input-sm">
+                <input type="text" class="form-control input-sm" ng-model="registerFirstName">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Last Name</label>
               <div class="col-md-5">
-                <input type="text" class="form-control input-sm">
+                <input type="text" class="form-control input-sm" ng-model="registerLastName">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Email </label>
               <div class="col-md-5">
-                <input type="email" class="form-control input-sm">
+                <input type="email" class="form-control input-sm" ng-model="registerEmail">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 cold-md-offset-1"> Section </label>
+              <div class="col-md-5">
+                <input type="text" class="form-control input-sm" ng-model="registerSection">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Password</label>
               <div class="col-md-5">
-                <input type="password" class="form-control input-sm">
+                <input type="password" class="form-control input-sm" ng-model="registerPassword">
               </div>
             </div>
 
@@ -90,7 +97,7 @@
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="register()">
               </div>
             </div>
 
@@ -127,7 +134,7 @@
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal">
               </div>
             </div>
 
@@ -137,11 +144,16 @@
     </div>
   </div>
   
+  <!-- Putting back logo for now -->
+  <div class="forum1">
+    <img src="https://s3-us-west-2.amazonaws.com/asset.plexuss.com/college/logos/Rutgers_University_New_Brunswick.png" height="200px" width="200px">
+  </div>
 
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
-    <script type="text/javascript" src="../js/homepage.js"></script>
-    <!--script src="js/bootstrap.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/functionality.js"></script>
   </body>
 </html>
