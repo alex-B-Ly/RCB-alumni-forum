@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- begining of navbar section-->
-    <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -38,7 +38,7 @@
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+  </nav>
     <!-- end of navbar section-->
   <div id="wrapper" class>
     <!--SIDEBAR-->
@@ -75,8 +75,8 @@
                   <li class="student">
                     <div class="student-body">
                       <div class="student">
-                        <a class="pull-left" href="#"></a>
                         <img src="student image goes here">
+                        <a class="pull-left" data-toggle="modal" data-target="#profileView" href="#">profile modal here</a>
                         <div class="student-body">
                             
                             Donec sit aet ligula enim. Duis vel condimentum massa.
@@ -106,6 +106,43 @@
             
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">toggle menu</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Profile page modal -->
+  <div class="modal fade" id="profileView">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+          <h4 class="modal-title"> User Profile </h4>
+        </div>
+        <div class="modal-body"> 
+          <center>
+            <img src="#">
+            <h3 class="username"> Chris Campbell </h3>
+            <span>Skills: </span>
+            <span class="label label-info"> html5/css</span>
+            <span class="label label-info"> MongoDB</span>
+            <span class="label label-info"> Express.js</span>
+            <span class="label label-info"> Javascript</span>
+            <br>          
+          </center>
+          <hr>
+          <center>
+            <p class="text-left">
+              <strong>Bio: </strong>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.
+            </p>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <center>
+            <button type="button" class="btn btn-default" href="#">Show Full Profile</button>
+          </center>
         </div>
       </div>
     </div>
