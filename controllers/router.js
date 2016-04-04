@@ -28,6 +28,7 @@ router.post('/login', function(req, res){
   User.findOne({ email: req.body.email }, function(err, user){
     if(err){throw err}
 
+    // TODO Get data back and use Angular to manipulate it in the page.  Users must be authenticated and session used.
     if(!user){
       console.log('user does not exist');
     }else{
