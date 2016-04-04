@@ -25,7 +25,16 @@ router.post('/register', function(req, res){
 
 // LOGIN
 router.post('/login', function(req, res){
-  console.log(req.body);
+  User.findOne({ email: req.body.email }, function(err, user){
+    if(err){throw err}
+
+    if(!user){
+      console.log('user does not exist');
+    }else{
+      console.log('user exists');
+    }
+
+  });
 });
 
 module.exports = router;
