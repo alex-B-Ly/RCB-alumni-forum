@@ -32,6 +32,11 @@ router.post('/login', function(req, res){
       console.log('user does not exist');
     }else{
       console.log('user exists');
+      if(user.password === req.body.password){
+        console.log('welcome');
+      }else{
+        console.log('Credentials do not work.');
+      }
     }
 
   });
