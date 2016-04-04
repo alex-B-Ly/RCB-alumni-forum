@@ -34,10 +34,14 @@
         </ul>
         <!-- Sign Up Button-->
         <!-- TODO FIX THIS WITH NAV RIGHT -->
-        <div class="navbar-right">
+        <div class="navbar-right" ng-hide="loggedIn">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
           <!-- Log In Button-->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
+        </div>
+        <div class="navbar-right" ng-show="loggedIn">
+          <p class="nav-user">{{ user }}</p>
+          <!-- TODO Add dropdown with profile edit and log out -->
         </div>
       </div>
     </div>
@@ -148,7 +152,6 @@
   <div class="forum1">
     <img src="https://s3-us-west-2.amazonaws.com/asset.plexuss.com/college/logos/Rutgers_University_New_Brunswick.png" height="200px" width="200px">
   </div>
-  {{ user }}
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

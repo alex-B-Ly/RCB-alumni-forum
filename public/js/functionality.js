@@ -33,7 +33,7 @@ home.controller('homepageController', function($scope, $http){
     }).then(function(result){
       console.log(result.data);
       $scope.user = result.data.firstName + ' ' + result.data.lastName;
-      // TODO manipulate result
+      $scope.loggedIn = true;
     });
   }
 
