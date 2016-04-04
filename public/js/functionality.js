@@ -3,6 +3,7 @@ var home = angular.module('homepage', []);
 
 home.controller('homepageController', function($scope, $http){
 
+  // REGISTER
   $scope.register = function(){
     $http({
       method: 'POST',
@@ -16,6 +17,17 @@ home.controller('homepageController', function($scope, $http){
       }
     }).then(function(result){
       console.log(result);
+      // TODO manipulate result
+    });
+  }
+
+  // LOGIN
+  $scope.login = function(){
+    $http({
+      method: 'POST',
+      url: '/login',
+      data:{}
+    }).then(function(result){
       // TODO manipulate result
     });
   }

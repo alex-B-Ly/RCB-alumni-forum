@@ -121,20 +121,20 @@
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Email </label>
               <div class="col-md-5">
-                <input type="email" class="form-control input-sm">
+                <input type="email" class="form-control input-sm" ng-model="loginEmail">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Password</label>
               <div class="col-md-5">
-                <input type="password" class="form-control input-sm">
+                <input type="password" class="form-control input-sm" ng-model="loginPassword">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="login()">
               </div>
             </div>
 
