@@ -18,6 +18,7 @@ home.controller('homepageController', function($scope, $http){
     }).then(function(result){
       console.log(result);
       $scope.newRegister = true;
+      $scope.loginFail = false;
       // TODO manipulate result
     });
   }
@@ -32,9 +33,14 @@ home.controller('homepageController', function($scope, $http){
         password: $scope.loginPassword
       }
     }).then(function(result){
-      console.log(result.data);
-      $scope.user = result.data.firstName + ' ' + result.data.lastName;
-      $scope.loggedIn = true;
+      if(result.data === ""){
+        $scope.loginFail = true;
+        $scope.newRegister = false;
+      }else{
+        console.log(result.data);
+        $scope.user = result.data.firstName + ' ' + result.data.lastName;
+        $scope.loggedIn = true;
+      }
     });
   }
 

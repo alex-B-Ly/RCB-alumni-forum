@@ -31,6 +31,7 @@ router.post('/login', function(req, res){
     // TODO Get data back and use Angular to manipulate it in the page.  Users must be authenticated and session used.
     if(!user){
       console.log('user does not exist');
+      res.send(err);
     }else{
       console.log('user exists');
       if(user.password === req.body.password){
@@ -42,6 +43,7 @@ router.post('/login', function(req, res){
         console.log('welcome');
       }else{
         console.log('Credentials do not work.');
+        res.send(err);
       }
     }
 
