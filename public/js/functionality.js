@@ -17,6 +17,7 @@ home.controller('homepageController', function($scope, $http){
       }
     }).then(function(result){
       console.log(result);
+      $scope.newRegister = true;
       // TODO manipulate result
     });
   }

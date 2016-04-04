@@ -47,6 +47,10 @@
     </div>
   </nav>
 
+  <div class="row text-center" ng-hide="loggedIn">
+    <p ng-show="newRegister">Thank you for registering.</p>
+  </div>
+
   <!--pop up sign up form-->
   <div class="modal fade" id="signupform">
     <div class="modal-dialog">
