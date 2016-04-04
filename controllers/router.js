@@ -34,6 +34,7 @@ router.post('/login', function(req, res){
     }else{
       console.log('user exists');
       if(user.password === req.body.password){
+        res.send(user);
         console.log('welcome');
       }else{
         console.log('Credentials do not work.');
