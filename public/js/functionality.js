@@ -26,7 +26,10 @@ home.controller('homepageController', function($scope, $http){
     $http({
       method: 'POST',
       url: '/login',
-      data:{}
+      data:{
+        email: $scope.loginEmail,
+        password: $scope.loginPassword
+      }
     }).then(function(result){
       // TODO manipulate result
     });

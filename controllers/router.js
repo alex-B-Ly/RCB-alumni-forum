@@ -24,6 +24,8 @@ router.post('/register', function(req, res){
 });
 
 // LOGIN
-
+router.post('/login', function(req, res){
+  console.log(req.body);
+});
 
 module.exports = router;
