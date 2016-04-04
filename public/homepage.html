@@ -34,14 +34,22 @@
         </ul>
         <!-- Sign Up Button-->
         <!-- TODO FIX THIS WITH NAV RIGHT -->
-        <div class="navbar-right">
+        <div class="navbar-right" ng-hide="loggedIn">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
           <!-- Log In Button-->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
         </div>
+        <div class="navbar-right" ng-show="loggedIn">
+          <p class="nav-user">{{ user }}</p>
+          <!-- TODO Add dropdown with profile edit and log out -->
+        </div>
       </div>
     </div>
   </nav>
+
+  <div class="row text-center" ng-hide="loggedIn">
+    <p ng-show="newRegister">Thank you for registering.</p>
+  </div>
 
   <!--pop up sign up form-->
   <div class="modal fade" id="signupform">
@@ -121,20 +129,20 @@
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Email </label>
               <div class="col-md-5">
-                <input type="email" class="form-control input-sm">
+                <input type="email" class="form-control input-sm" ng-model="loginEmail">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 cold-md-offset-1"> Password</label>
               <div class="col-md-5">
-                <input type="password" class="form-control input-sm">
+                <input type="password" class="form-control input-sm" ng-model="loginPassword">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal">
+                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="login()">
               </div>
             </div>
 
@@ -148,7 +156,6 @@
   <div class="forum1">
     <img src="https://s3-us-west-2.amazonaws.com/asset.plexuss.com/college/logos/Rutgers_University_New_Brunswick.png" height="200px" width="200px">
   </div>
-
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

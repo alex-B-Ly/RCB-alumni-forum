@@ -23,4 +23,29 @@ router.post('/register', function(req, res){
   });
 });
 
+// LOGIN
+router.post('/login', function(req, res){
+  User.findOne({ email: req.body.email }, function(err, user){
+    if(err){throw err}
+
+    // TODO Get data back and use Angular to manipulate it in the page.  Users must be authenticated and session used.
+    if(!user){
+      console.log('user does not exist');
+    }else{
+      console.log('user exists');
+      if(user.password === req.body.password){
+        var userInfo = {
+          firstName: user.firstName,
+          lastName: user.lastName
+        }
+        res.send(userInfo);
+        console.log('welcome');
+      }else{
+        console.log('Credentials do not work.');
+      }
+    }
+
+  });
+});
+
 module.exports = router;
