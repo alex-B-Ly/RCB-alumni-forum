@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>THE RCB Alumni Forum</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
-   <link rel="stylesheet" type="text/css" href="../css/messenger.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>THE RCB Alumni Forum</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
+  <link rel="stylesheet" type="text/css" href="../css/messenger.css">
+</head>
+<body>
     <!-- begining of navbar section-->
-    <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -38,46 +38,116 @@
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+  </nav>
     <!-- end of navbar section-->
-<body>
-<div id="wrapper" class>
+  <div id="wrapper" class>
     <!--SIDEBAR-->
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-            <a href="#">
-                RCB STUDENTS</a>
-            <li>
-                <a href="#">Chris Campbell</a>
-            </li>
-            <li>
-                <a href="#">Alex ly</a>
-            </li>
-            <li>
-                <a href="#">Carolyn Tevnan</a>
-            </li>
-            <li>
-                <a href="#">Marco Sebello</a>
-            </li>
-            <li>
-                <a href="#">Albert Bahia</a>
-            </li>
-        </ul>
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">RCB STUDENTS</a>
+        <li>
+          <a href="#">Chris Campbell</a>
+        </li>
+        <li>
+          <a href="#">Alex ly</a>
+        </li>
+        <li>
+          <a href="#">Carolyn Tevnan</a>
+        </li>
+        <li>
+          <a href="#">Marco Sebello</a>
+        </li>
+        <li>
+          <a href="#">Albert Bahia</a>
+        </li>
+      </ul>
     </div>
     <!--end sidebar wrapper-->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Message board area??</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit egestas eros, ut maximus magna blandit ut. Suspendisse vel molestie sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce sit amet egestas dui, vitae tincidunt justo.</p>
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">toggle menu</a>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-info">
+              <div class="panel-heading">Recent chat history</div>
+              <div class="panel-body">
+                <ul class="student-list">
+                  <li class="student">
+                    <div class="student-body">
+                      <div class="student">
+                        <img src="student image goes here">
+                        <a class="pull-left" data-toggle="modal" data-target="#profileView" href="#">profile modal here</a>
+                        <div class="student-body">
+                            
+                            Donec sit aet ligula enim. Duis vel condimentum massa.
+
+
+                            Duis vel condimentum massa.
+                            Donec sit amet ligula enim. Duis vel condimentum massa.
+                            
+                        </div>
+                        <br>
+                        <small class="text-muted">Chris Campbell | April 2, 2016 at 1:17pm</small>
+                        <hr>
+                      </div>
+                    </div>                                    
+                  </li>
+                </ul>
+              </div>
+              <div class="panel-footer">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter Message">
+                  <span class="input-group-btn">
+                    <button class="btn btn-info" type="button">SEND</button>
+                  </span>
                 </div>
+              </div>
             </div>
+            
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">toggle menu</a>
+          </div>
         </div>
-        
+      </div>
     </div>
+  </div>
+  
+    <!-- Profile page modal -->
+  <div class="modal fade" id="profileView">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+          <h4 class="modal-title"> User Profile </h4>
+        </div>
+        <div class="modal-body"> 
+          <center>
+            <img src="#">
+            <h3 class="username"> Chris Campbell </h3>
+            <span>Skills: </span>
+            <span class="label label-info"> html5/css</span>
+            <span class="label label-info"> MongoDB</span>
+            <span class="label label-info"> Express.js</span>
+            <span class="label label-info"> Javascript</span>
+            <br>          
+          </center>
+          <hr>
+          <center>
+            <p class="text-left">
+              <strong>Bio: </strong>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.
+            </p>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <center>
+            <button type="button" class="btn btn-default" href="#">Show Full Profile</button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/messageBoardPage.js"></script>
