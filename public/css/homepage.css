@@ -3,24 +3,37 @@ body{
   background-image: url("");
 }
 
-nav.navbar-default{
+.navbar-default{
   background-color: #e60000;
 }
 
-div.forum1 {
-    text-align: center;
-    height: 10em;
-    position: relative;
-    font-size: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  transform: translate(-50%, -50%);}
+#navbrand{
+  color: #fff;
+}
 
-div.forum2{
-  position: fixed;
-  bottom: 0;
-  right: 0;
+.forum1{
+  padding-top: 175px;
+}
+
+.main-link-area{
+  padding: 70px 0;
+}
+
+.main-link,
+.main-link:hover,
+.main-link:link{
+  font-size: 2em;
+  background: #e60000;
+  text-decoration: none;
+  color: #fff;
+  padding: 25px;
+  border-radius: 30px;
+  transition: all 1.4s;
+}
+
+.main-link:hover{
+  background: #FF3132;
+  text-shadow: 0 0 35px #D6D6D6;
 }
 
 /*experimentation*/
