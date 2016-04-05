@@ -1,9 +1,9 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  bcrypt = require('bcrypt'),
-  SALT_WORK_FACTOR = 10;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var bcrypt = require('bcryptjs');
+var SALT_WORK_FACTOR = 10;
 
-var userSchema = new Schema({
+var UserSchema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -33,7 +33,7 @@ var userSchema = new Schema({
   }
 });
 
-userSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
   var user = this;
 
   //only hash passwords that havent been modified/are new
@@ -42,7 +42,7 @@ userSchema.pre('save', function(next) {
   //generate salt
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) return next (err);
-  }
+  
 
     //hash password with salt
     bcrypt.hash(user.password, salt, function(err, hash) {
@@ -55,17 +55,19 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
+UserSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
+    if (err) return callback(err);
+    callback(null, isMatch);
   });
-});    
+};    
     
-userSchema.virtual('fullName').get(function() {
+UserSchema.virtual('fullName').get(function() {
   return this.firstName + ' ' + this.lastName;
+ 
+  UserSchema.set('toJSON', { getters: true, virtuals: true});
 });
 
-userSchema.set('toJSON', { getters: true, virtuals: true});
 
-module.exports = mongoose.model('User', userSchema);
+
+module.exports = mongoose.model('User', UserSchema);
