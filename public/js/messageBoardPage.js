@@ -14,9 +14,8 @@ messager.controller('sidebarController', function($scope, $http){
     method:'GET'
   }).then(function(result){
     for(var i=0; i<result.data.length; i++){
-      students.push(result.data[i]);
+      $scope.students.push(result.data[i]);
     }
-    console.log(students);
   });
 
 });
