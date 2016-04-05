@@ -46,8 +46,19 @@ router.post('/login', function(req, res){
         res.send(err);
       }
     }
-
   });
 });
+
+// GET STUDENTS
+router.get('/getstudents', function(req, res){
+  User.find({}, function(err, users){
+    if(err){throw err}
+    // TODO Manipulate users data so it doesn't send out sensitive info like passwords
+    console.log(users);
+    res.send('user info being passed on page load');
+  }); 
+});
+
+
 
 module.exports = router;
