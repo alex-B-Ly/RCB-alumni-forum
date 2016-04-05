@@ -14,11 +14,6 @@ var userSchema = new Schema({
     required: true,
     trim: true
   },
-  fullName: {
-    type: String,
-    required: true,
-    trim: true
-  },
   password: {
     type: String,
     required: true
@@ -67,5 +62,10 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
   });
 });    
     
+userSchema.virtual('fullName').get(function() {
+  return this.firstName + ' ' + this.lastName;
+});
+
+userSchema.set('toJSON', { getters: true, virtuals: true});
 
 module.exports = mongoose.model('User', userSchema);
