@@ -61,13 +61,64 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     if (err) return callback(err);
     callback(null, isMatch);
   });
-};    
-    
-UserSchema.virtual('fullName').get(function() {
-  return this.firstName + ' ' + this.lastName;
+};
+
+//set virtual field to be displayed on client side
+var UserSchema = new Schema({
+  name: {
+      first: String,
+      last: String
+     }
+  }, {
+   toObject: {
+   virtuals: true
+   },
+   toJSON: {
+   virtuals: true
+   }
+ });
+   
+ var User = mongoose.model('User', UserSchema);
+
+ var theTeach = new User({
+    name:  { first: 'Darryl', last: 'Mendonez' }
+  });
+
+ //define a virtual attribute, name.full
+ console.log('theTeach.name.full');
  
-  UserSchema.set('toJSON', { getters: true, virtuals: true});
+//declare virtual attribute name.full on the Schema, User
+ UserSchema
+ .virtual('name.full')
+ .get(function() {
+    return this.name.first + '  ' + this.name.last;
+ });
+ .set(function (setFullNameTo) {
+   var split = setFullNameTo.split('  ')
+   , firstName = split[0]
+   , lastName = split[1];
+
+   this.set('name.first', firstName);
+   this.set('name.last', lastName);
+  });
+
+// invoke 
+
+ theTeach.set('name.full', 'The Teach');
+
+//save the doc, then name.first and name.last will be
+//changed in mongodb, but the mongodb doc will not have persisted
+//a name.fill key or value to the db
+
+theTeach.save(function (err) {
+  User.findById(theTeach._id, function (err, found) {
+    console.log(found.name.first); // 'The'
+    console.log(found.name.last); // 'Teach'
+  });
 });
+
+
+UserSchema.set('toJSON', { getters: true, virtuals: true});
 
 
 
