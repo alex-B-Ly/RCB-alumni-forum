@@ -7,12 +7,16 @@ $("#menu-toggle").click(function(e){
 var messager = angular.module('messageBoard', []);
 
 messager.controller('sidebarController', function($scope, $http){
+  $scope.students = [];
 
   $http({
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
-    console.log(result);
+    for(var i=0; i<result.data.length; i++){
+      students.push(result.data[i]);
+    }
+    console.log(students);
   });
 
 });
