@@ -35,8 +35,15 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
         </div>
         <div class="navbar-right" ng-show="loggedIn">
-          <p class="nav-user">{{ user }}</p>
-          <!-- TODO Add dropdown with profile edit and log out -->
+          <div class="dropdown">
+            <button type="button" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown"> {{ user }}<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit Profile</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li> 
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
