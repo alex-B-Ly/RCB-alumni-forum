@@ -14,6 +14,16 @@ var Users = {
     jobTitle: String,
     jobDescription: String,
     bio: String,
-    skills:[{}]
+    skills:[{}],
+    currentlyLearning: String,
+    recentlyLearned:[{
+
+    }],
+    socialMedia:{
+      linkedinURL: String, 
+      githubURL: String,
+      twitter: String,
+      facebook: String
+    }
   }
 }
