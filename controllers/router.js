@@ -46,8 +46,32 @@ router.post('/login', function(req, res){
         res.send(err);
       }
     }
-
   });
 });
+
+// GET STUDENTS
+router.get('/getstudents', function(req, res){
+  User.find({}, function(err, users){
+    if(err){throw err}
+    // TODO Manipulate users data so it doesn't send out sensitive info like passwords
+    var userInfo = [];
+
+    for(var i=0; i<users.length; i++){
+      var fName = users[i].firstName;
+      var lName = users[i].lastName;
+
+      var theUser = {
+        firstName: fName,
+        lastName: lName
+      }
+
+      userInfo.push(theUser);
+    }
+    
+    res.send(userInfo);
+  }); 
+});
+
+
 
 module.exports = router;

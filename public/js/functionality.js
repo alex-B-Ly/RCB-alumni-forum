@@ -19,7 +19,6 @@ home.controller('homepageController', function($scope, $http){
       console.log(result);
       $scope.newRegister = true;
       $scope.loginFail = false;
-      // TODO manipulate result
     });
   }
 
@@ -45,3 +44,4 @@ home.controller('homepageController', function($scope, $http){
   }
 
 });
+
