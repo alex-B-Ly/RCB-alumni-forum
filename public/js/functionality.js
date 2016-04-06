@@ -1,7 +1,7 @@
 // HOMEPAGE ANGULAR
-var home = angular.module('homepage', []);
+var rcb = angular.module('RCBmessenger', []);
 
-home.controller('homepageController', function($scope, $http){
+rcb.controller('homepageController', function($scope, $http){
 
   // REGISTER
   $scope.register = function(){
@@ -45,3 +45,23 @@ home.controller('homepageController', function($scope, $http){
 
 });
 
+// SIDEBAR POPULATE STUDENTS
+rcb.controller('sidebarController', function($scope, $http){
+  $scope.students = [];
+
+  $http({
+    url:'/getstudents',
+    method:'GET'
+  }).then(function(result){
+    for(var i=0; i<result.data.length; i++){
+      $scope.students.push(result.data[i]);
+    }
+  });
+});
+
+// MESSAGE BOARD PAGE
+
+$("#menu-toggle").click(function(e){
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
