@@ -1,5 +1,5 @@
 // HOMEPAGE ANGULAR
-var rcb = angular.module('RCBmessenger', []);
+var rcb = angular.module('RCBmessenger');
 
 rcb.controller('homepageController', function($scope, $http){
 
