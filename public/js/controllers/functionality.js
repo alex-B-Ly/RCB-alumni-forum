@@ -1,7 +1,7 @@
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
-rcb.controller('homepageController', function($scope, $http){
+rcb.controller('navController', function($scope, $http){
 
   // REGISTER
   $scope.register = function(){
@@ -61,7 +61,7 @@ rcb.controller('sidebarController', function($scope, $http){
 
 // MESSAGE BOARD PAGE
 
-$("#menu-toggle").click(function(e){
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+$(document).on('click', '#menu-toggle', function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
 });

@@ -8,155 +8,158 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+   <link rel="stylesheet" type="text/css" href="../css/messenger.css">
   </head>
-  <body ng-controller="homepageController as home">
+  <body>
 
-  <!-- begining of navbar section-->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a id="navbrand" class="navbar-brand" href="#">RU</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <!-- Sign Up Button-->
-        <div class="navbar-right" ng-hide="loggedIn">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
-          <!-- Log In Button-->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
+  <header ng-controller="navController">
+    <!-- begining of navbar section-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id="navbrand" class="navbar-brand" ui-sref="welcome">RU</a>
         </div>
-        <div class="navbar-right" ng-show="loggedIn">
-          <div class="dropdown">
-            <button type="button" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown"> {{ user }}<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit Profile</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li> 
-              </ul>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- Sign Up Button-->
+          <div class="navbar-right" ng-hide="loggedIn">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupform">Sign Up</button>
+            <!-- Log In Button-->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginform">Log In</button>
+          </div>
+          <div class="navbar-right" ng-show="loggedIn">
+            <div class="dropdown">
+              <button type="button" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown"> {{ user }}<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit Profile</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li> 
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </nav>
+
+    <div class="row text-center" ng-hide="loggedIn">
+      <p ng-show="newRegister">Thank you for registering.</p>
     </div>
-  </nav>
 
-  <div class="row text-center" ng-hide="loggedIn">
-    <p ng-show="newRegister">Thank you for registering.</p>
-  </div>
+    <div class="row text-center" ng-hide="loggedIn">
+      <p ng-show="loginFail">Your credentials do not work.</p>
+    </div>
 
-  <div class="row text-center" ng-hide="loggedIn">
-    <p ng-show="loginFail">Your credentials do not work.</p>
-  </div>
-
-  <!--pop up sign up form-->
-  <div class="modal fade" id="signupform">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
-          <h4 class="modal-title">Sign Up</h4>
-        </div>
-        <div class="modal-body">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> First Name</label>
-              <div class="col-md-5">
-                <input type="text" class="form-control input-sm" ng-model="registerFirstName">
+    <!--pop up sign up form-->
+    <div class="modal fade" id="signupform">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+            <h4 class="modal-title">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> First Name</label>
+                <div class="col-md-5">
+                  <input type="text" class="form-control input-sm" ng-model="registerFirstName">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Last Name</label>
-              <div class="col-md-5">
-                <input type="text" class="form-control input-sm" ng-model="registerLastName">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Last Name</label>
+                <div class="col-md-5">
+                  <input type="text" class="form-control input-sm" ng-model="registerLastName">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Email </label>
-              <div class="col-md-5">
-                <input type="email" class="form-control input-sm" ng-model="registerEmail">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Email </label>
+                <div class="col-md-5">
+                  <input type="email" class="form-control input-sm" ng-model="registerEmail">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Section </label>
-              <div class="col-md-5">
-                <input type="text" class="form-control input-sm" ng-model="registerSection">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Section </label>
+                <div class="col-md-5">
+                  <input type="text" class="form-control input-sm" ng-model="registerSection">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Password</label>
-              <div class="col-md-5">
-                <input type="password" class="form-control input-sm" ng-model="registerPassword">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Password</label>
+                <div class="col-md-5">
+                  <input type="password" class="form-control input-sm" ng-model="registerPassword">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Confirm Password</label>
-              <div class="col-md-5">
-                <input type="password" class="form-control input-sm">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Confirm Password</label>
+                <div class="col-md-5">
+                  <input type="password" class="form-control input-sm">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="register()">
+              <div class="form-group">
+                <div class="col-md-2 col-md-offset-8">
+                  <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="register()">
+                </div>
               </div>
-            </div>
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Pop up Login Form -->
-  <div class="modal fade" id="loginform">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
-          <h4 class="modal-title"> Log In</h4>
-        </div>
-        <div class="modal-body"> 
-          <form class="form-horizontal">
+    <!-- Pop up Login Form -->
+    <div class="modal fade" id="loginform">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
+            <h4 class="modal-title"> Log In</h4>
+          </div>
+          <div class="modal-body"> 
+            <form class="form-horizontal">
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Email </label>
-              <div class="col-md-5">
-                <input type="email" class="form-control input-sm" ng-model="loginEmail">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Email </label>
+                <div class="col-md-5">
+                  <input type="email" class="form-control input-sm" ng-model="loginEmail">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-md-4 cold-md-offset-1"> Password</label>
-              <div class="col-md-5">
-                <input type="password" class="form-control input-sm" ng-model="loginPassword">
+              <div class="form-group">
+                <label class="col-md-4 cold-md-offset-1"> Password</label>
+                <div class="col-md-5">
+                  <input type="password" class="form-control input-sm" ng-model="loginPassword">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <div class="col-md-2 col-md-offset-8">
-                <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="login()">
+              <div class="form-group">
+                <div class="col-md-2 col-md-offset-8">
+                  <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="login()">
+                </div>
               </div>
-            </div>
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
+  </header>
+
   <ui-view></ui-view>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
