@@ -55,14 +55,16 @@ router.get('/getstudents', function(req, res){
     if(err){throw err}
     // TODO Manipulate users data so it doesn't send out sensitive info like passwords
     var userInfo = [];
-
+    
     for(var i=0; i<users.length; i++){
       var fName = users[i].firstName;
       var lName = users[i].lastName;
+      var sect = users[i].section;
 
       var theUser = {
         firstName: fName,
-        lastName: lName
+        lastName: lName,
+        section: sect
       }
 
       userInfo.push(theUser);

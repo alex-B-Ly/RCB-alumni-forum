@@ -53,6 +53,7 @@ rcb.controller('sidebarController', function($scope, $http){
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
+    console.log(result);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
@@ -60,8 +61,12 @@ rcb.controller('sidebarController', function($scope, $http){
 });
 
 // MESSAGE BOARD PAGE
-
 $(document).on('click', '#menu-toggle', function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
+});
+
+// PROFILE EDIT CONTROLLER
+rcb.controller('editController', function($scope, $http){
+  $scope.test ="Working";
 });
