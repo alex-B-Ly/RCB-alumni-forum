@@ -7,8 +7,9 @@ var User = require('../models/user.js');
 
 // HOMEPAGE
 router.get('/', function(req, res){
-  res.sendFile(process.cwd() + '/public/homepage.html');
+  res.sendFile(process.cwd() + '/public/homepage.html');  
 });
+
 
 // REGISTER
 router.post('/register', function(req, res){
@@ -73,6 +74,7 @@ router.get('/getstudents', function(req, res){
     res.send(userInfo);
   }); 
 });
+
 
 
 

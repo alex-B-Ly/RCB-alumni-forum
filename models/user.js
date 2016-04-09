@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcryptjs');
-var SALT_WORK_FACTOR = 10;
+//var bcrypt = require('bcryptjs');
+//var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
   firstName:{
@@ -62,6 +62,5 @@ var userSchema = new Schema({
 //     callback(null, isMatch);
 //   });
 // };
-
 
 module.exports = mongoose.model('User', userSchema);
