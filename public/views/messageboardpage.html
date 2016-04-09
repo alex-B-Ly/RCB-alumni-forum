@@ -7,7 +7,7 @@
         <li class="sidebar-brand">
           <a href="#">RCB STUDENTS</a>
         </li>
-        <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView" ng-click="test()">
+        <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView" ng-click="profileModal()">
           <span>{{ student.firstName }} {{ student.lastName }}</span>
           <!-- <span>{{ student.section }}</span> -->
         </li>
@@ -73,10 +73,7 @@
             <img src="#">
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <span>Skills: </span>
-            <span class="label label-info"> html5/css</span>
-            <span class="label label-info"> MongoDB</span>
-            <span class="label label-info"> Express.js</span>
-            <span class="label label-info"> Javascript</span>
+            <span class="label label-info" ng-repeat="skill in userSkills">{{ skill }}</span>
             <br>          
           </center>
           <hr>

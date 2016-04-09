@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-//var bcrypt = require('bcryptjs');
-//var SALT_WORK_FACTOR = 10;
+var bcrypt = require('bcryptjs');
+var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
   firstName:{
@@ -35,7 +35,16 @@ var userSchema = new Schema({
   profile:{
     bio:{
       type: String
-    }
+    },
+    jobTitle:{
+      type: String
+    },
+    jobDescription:{
+      type: String
+    },
+    skills:[{
+      type: String
+    }]
   }
 });
 

@@ -59,10 +59,11 @@ rcb.controller('sidebarController', function($scope, $http){
     }
   });
 
-  $scope.test = function(){
+  $scope.profileModal = function(){
     $scope.profBio = this.student.profile.bio;
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
+    $scope.userSkills = this.student.profile.skills;
   }
 });
 
