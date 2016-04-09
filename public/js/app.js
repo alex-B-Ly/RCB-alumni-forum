@@ -12,6 +12,12 @@ angular.module('RCBmessenger', ['ui.router'])
   .state('messageboard', {
     url: '/messageboard',
     templateUrl: '/views/messageboardpage.html'
+  });
+
+  $stateProvider
+  .state('profileedit', {
+    url: '/profileedit',
+    templateUrl: '/views/profileEdit.html'
   });  
 
   $locationProvider.html5Mode({

@@ -53,15 +53,24 @@ rcb.controller('sidebarController', function($scope, $http){
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
+    console.log(result);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
   });
+
+  $scope.test = function(){
+    console.log(this.student);
+  }
 });
 
-// MESSAGE BOARD PAGE
-
+// MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
+});
+
+// PROFILE EDIT CONTROLLER
+rcb.controller('editController', function($scope, $http){
+  $scope.test ="Working";
 });
