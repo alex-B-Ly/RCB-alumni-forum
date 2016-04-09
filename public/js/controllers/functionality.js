@@ -60,7 +60,9 @@ rcb.controller('sidebarController', function($scope, $http){
   });
 
   $scope.test = function(){
-    console.log(this.student);
+    $scope.profBio = this.student.profile.bio;
+    $scope.profFirstName = this.student.firstName;
+    $scope.profLastName = this.student.lastName;
   }
 });
 
