@@ -58,9 +58,13 @@ rcb.controller('sidebarController', function($scope, $http){
       $scope.students.push(result.data[i]);
     }
   });
+
+  $scope.test = function(){
+    console.log(this.student);
+  }
 });
 
-// MESSAGE BOARD PAGE
+// MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");

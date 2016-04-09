@@ -29,7 +29,7 @@ router.post('/login', function(req, res){
   User.findOne({ email: req.body.email }, function(err, user){
     if(err){throw err}
 
-    // TODO Get data back and use Angular to manipulate it in the page.  Users must be authenticated and session used.
+    // TODO Use passport and bcrypt to check passwords.
     if(!user){
       console.log('user does not exist');
       res.send(err);
@@ -54,18 +54,19 @@ router.post('/login', function(req, res){
 router.get('/getstudents', function(req, res){
   User.find({}, function(err, users){
     if(err){throw err}
-    // TODO Manipulate users data so it doesn't send out sensitive info like passwords
     var userInfo = [];
     
     for(var i=0; i<users.length; i++){
       var fName = users[i].firstName;
       var lName = users[i].lastName;
       var sect = users[i].section;
+      var userId = users[i]._id;
 
       var theUser = {
         firstName: fName,
         lastName: lName,
-        section: sect
+        section: sect,
+        id: userId
       }
 
       userInfo.push(theUser);

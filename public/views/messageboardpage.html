@@ -7,7 +7,7 @@
         <li class="sidebar-brand">
           <a href="#">RCB STUDENTS</a>
         </li>
-        <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView">
+        <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView" ng-click="test()">
           <span>{{ student.firstName }} {{ student.lastName }}</span>
           <!-- <span>{{ student.section }}</span> -->
         </li>
