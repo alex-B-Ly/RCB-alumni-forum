@@ -31,6 +31,11 @@ var userSchema = new Schema({
   dateCreated:{
     type: Date,
     default: Date.now
+  },
+  profile:{
+    bio:{
+      type: String
+    }
   }
 });
 
