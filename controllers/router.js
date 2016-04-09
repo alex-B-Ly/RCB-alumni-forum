@@ -61,17 +61,19 @@ router.get('/getstudents', function(req, res){
       var lName = users[i].lastName;
       var sect = users[i].section;
       var userId = users[i]._id;
+      var userProfile = users[i].profile;
 
       var theUser = {
         firstName: fName,
         lastName: lName,
         section: sect,
-        id: userId
+        id: userId,
+        profile: userProfile
       }
 
       userInfo.push(theUser);
     }
-    
+
     res.send(userInfo);
   }); 
 });
