@@ -1,13 +1,15 @@
+<section  ng-controller="sidebarController as sideControl">
   <!-- end of navbar section-->
-  <div id="wrapper" ng-controller="sidebarController as sideControl">
+  <div id="wrapper">
     <!--SIDEBAR-->
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
           <a href="#">RCB STUDENTS</a>
         </li>
-        <li ng-repeat="student in students">
-          {{ student.firstName }} {{ student.lastName }}
+        <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView">
+          <span>{{ student.firstName }} {{ student.lastName }}</span>
+          <!-- <span>{{ student.section }}</span> -->
         </li>
       </ul>
     </div>
@@ -65,12 +67,11 @@
       <div class="modal-content">
         <div class="modal-header text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label=""><span>&times;</span></button>
-          <h4 class="modal-title"> User Profile </h4>
         </div>
         <div class="modal-body"> 
           <center>
             <img src="#">
-            <h3 class="username"> Chris Campbell </h3>
+            <h3 class="username">Name goes here</h3>
             <span>Skills: </span>
             <span class="label label-info"> html5/css</span>
             <span class="label label-info"> MongoDB</span>
@@ -95,3 +96,4 @@
       </div>
     </div>
   </div>
+</section>
