@@ -64,6 +64,7 @@ rcb.controller('sidebarController', function($scope, $http){
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
+    $scope.profJobTitle = this.student.profile.jobTitle;
   }
 });
 
