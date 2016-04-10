@@ -1,7 +1,7 @@
 // HOMEPAGE ANGULAR
-var home = angular.module('homepage', []);
+var rcb = angular.module('RCBmessenger');
 
-home.controller('homepageController', function($scope, $http){
+rcb.controller('navController', function($scope, $http){
 
   // REGISTER
   $scope.register = function(){
@@ -19,7 +19,6 @@ home.controller('homepageController', function($scope, $http){
       console.log(result);
       $scope.newRegister = true;
       $scope.loginFail = false;
-      // TODO manipulate result
     });
   }
 
@@ -44,4 +43,37 @@ home.controller('homepageController', function($scope, $http){
     });
   }
 
+});
+
+// SIDEBAR POPULATE STUDENTS
+rcb.controller('sidebarController', function($scope, $http){
+  $scope.students = [];
+
+  $http({
+    url:'/getstudents',
+    method:'GET'
+  }).then(function(result){
+    console.log(result);
+    for(var i=0; i<result.data.length; i++){
+      $scope.students.push(result.data[i]);
+    }
+  });
+
+  $scope.profileModal = function(){
+    $scope.profBio = this.student.profile.bio;
+    $scope.profFirstName = this.student.firstName;
+    $scope.profLastName = this.student.lastName;
+    $scope.userSkills = this.student.profile.skills;
+  }
+});
+
+// MESSAGE BOARD PAGE MENU TOGGLE
+$(document).on('click', '#menu-toggle', function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
+
+// PROFILE EDIT CONTROLLER
+rcb.controller('editController', function($scope, $http){
+  $scope.test ="Working";
 });

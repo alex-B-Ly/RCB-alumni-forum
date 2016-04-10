@@ -1,35 +1,80 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcryptjs');
+var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
-  firstName: {
+  firstName:{
     type: String,
     required: true,
     trim: true
   },
-  lastName: {
+  lastName:{
     type: String,
     required: true,
     trim: true
   },
-  password: {
+  password:{
     type: String,
     required: true
   },
-  email: {
+  email:{
     type: String,
     trim: true,
     required: true
   },
-  section: {
+  section:{
     type: Number,
     trim: true,
     required: true
   },
-  dateCreated: {
+  dateCreated:{
     type: Date,
     default: Date.now
+  },
+  profile:{
+    bio:{
+      type: String
+    },
+    jobTitle:{
+      type: String
+    },
+    jobDescription:{
+      type: String
+    },
+    skills:[{
+      type: String
+    }]
   }
 });
+
+// userSchema.pre('save', function(next) {
+//   var user = this;
+
+//   //only hash passwords that havent been modified/are new
+//   if (!user.isModified('password')) return next();
+
+//   //generate salt
+//   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+//     if (err) return next (err);
+  
+
+//     //hash password with salt
+//     bcrypt.hash(user.password, salt, function(err, hash) {
+//       if (err) return next (err);
+    
+//       //override cleartxt password with hashed password
+//       user.password = hash;
+//       next();
+//     });
+//   });
+// });
+
+// userSchema.methods.comparePassword = function(candidatePassword, cb) {
+//   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+//     if (err) return callback(err);
+//     callback(null, isMatch);
+//   });
+// };
 
 module.exports = mongoose.model('User', userSchema);
