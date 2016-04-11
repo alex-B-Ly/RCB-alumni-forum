@@ -40,7 +40,7 @@ router.post('/login', function(req, res){
         if(err){
           throw err
         }else if(result === false){
-          console.log('get the fuck outta here!');
+          console.log('get outta here!');
           res.send(err);
         }else if(result === true){
           console.log('passwords match');
@@ -52,7 +52,7 @@ router.post('/login', function(req, res){
         }
       });      
     }
-    
+
   });
 });
 
