@@ -1,5 +1,5 @@
 var express = require('express');
-
+var bcrypt = require('bcryptjs');
 var router = express.Router();
 
 // MODELS
@@ -35,18 +35,24 @@ router.post('/login', function(req, res){
       res.send(err);
     }else{
       console.log('user exists');
-      if(user.password === req.body.password){
-        var userInfo = {
-          firstName: user.firstName,
-          lastName: user.lastName
+      
+      bcrypt.compare(req.body.password, user.password, function(err, result){
+        if(err){
+          throw err
+        }else if(result === false){
+          console.log('get the fuck outta here!');
+          res.send(err);
+        }else if(result === true){
+          console.log('passwords match');
+          var userInfo = {
+            firstName: user.firstName,
+            lastName: user.lastName
+          }
+          res.send(userInfo);
         }
-        res.send(userInfo);
-        console.log('welcome');
-      }else{
-        console.log('Credentials do not work.');
-        res.send(err);
-      }
+      });      
     }
+    
   });
 });
 
