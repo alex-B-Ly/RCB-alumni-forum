@@ -30,7 +30,7 @@ module.exports = function(passport){
       
       bcrypt.compare(req.body.password, user.password, function(err, result){
         if(err){
-          throw err
+          done(null, false);
         }else if(result === false){
           console.log('get outta here!');
           done(null, false);
@@ -38,7 +38,7 @@ module.exports = function(passport){
           console.log('passwords match');
           done(null, user);
         }
-      });      
+      });
     }
 
     });
