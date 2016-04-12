@@ -64,11 +64,13 @@ router.post('/login', function(req, res, next){
     }else if(!user){
       res.send(err);
     }else{
-      var userInfo = {
-        firstName: user.firstName,
-        lastName: user.lastName
-      }
-      res.send(userInfo);
+      req.login(user, function(err){
+        var userInfo = {
+          firstName: user.firstName,
+          lastName: user.lastName
+        }
+        res.send(userInfo);  
+      });
     }
     
   })(req, res, next);
@@ -98,7 +100,7 @@ router.get('/getstudents', function(req, res){
       userInfo.push(theUser);
     }
     console.log(req.session);
-    console.log(req.isAuthenticated());
+    console.log('user auth status: ',req.isAuthenticated());
     res.send(userInfo);
   }); 
 });
