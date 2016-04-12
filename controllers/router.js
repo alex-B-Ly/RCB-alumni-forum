@@ -1,9 +1,8 @@
 var express = require('express');
-
 var router = express.Router();
 
 // MODELS
-var User = require('../models/user.js');
+var User = require('/models/user.js');
 
 // HOMEPAGE
 router.get('/', function(req, res){
@@ -27,8 +26,7 @@ router.post('/register', function(req, res){
 router.post('/login', function(req, res){
   User.findOne({ email: req.body.email }, function(err, user){
     if(err){throw err}
-
-    // TODO Get data back and use Angular to manipulate it in the page.  Users must be authenticated and session used.
+       
     if(!user){
       console.log('user does not exist');
       res.send(err);
@@ -47,6 +45,4 @@ router.post('/login', function(req, res){
       }
     }
   });
-});
-
-module.exports = router;
+});      

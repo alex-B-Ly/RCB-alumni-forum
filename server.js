@@ -1,101 +1,157 @@
 var express = require('express');
-var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
+var path = require('path');
+var favicon = require('serve-favicon');
+var routes = require('./controllers/router');
+var User = require('/models/user.js');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var db = require('./config/connection.js');
-var PORT = process.env.PORT || 8080;
+var port = process.env.PORT || 8080;
+//var cfg = require('./config.js');
+var flash = require('connect-flash');
+var methodOverride = require('method-override');
 
 var app = express();
 
-// MIDDLEWARE
-// for logging, parsing, and session handling
-app.use(require('morgan')('combined'));
-app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-
-//initalizing passport and restore auth state, if any, from the session
-app.use(passport.initialize());
-app.use(passport.session());
+//require packages for authentication
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var serveStatic = require('serve-static');
+var passportLocalMongoose = require('passport-local-mongoose'); //handles salting and hashing of passwords.
+//remove bcrypt
 
 
-app.use(express.static('public'));
+//view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 
+//middleware for authentication
 app.use(logger('dev'));
-
 //app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({
-//  extended: false
-//}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(serveStatic(path.join(__dirname, 'public')));
+//app.use(passport.initialize());
+//app.use(passport.session());
 
-// config local strategy for passport to use
-//require a verify function which gets the credentials
-//('email' and 'password') submit by the user. function must verify that the password is correct
-//then invoke cb with a user object, which will be set as req.user in route handlers after auth
-passport.use(new Strategy(
-  function(email, password, cb) {
-    db.users.findByEmail(email, function (err, user) {
-      if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
-      return cb(null, user);
-    });
-  }));
+//configure passport-local-mongoose
+var User = require('/models/user.js');
+//use static authenticate method of model in LocalStrategy
+passport.use(new LocalStrategy(User.authenticate()));
+//use static serialize and deserialize of model in LocalStrategy
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-//config passport authenticated session persistence
-//to restore auth state across http reqs, passport needs to serialize users into and deserialize users
-//out of the session. supply user ID when serializing, query user record by id from mongodb when deserializing
-passport.serializeUser(function (user, cb) {
-  cb(null, user.id);
-});
+//mongoose connection here, and done.
+mongoose.createConnection('mongodb://localhost/RCB_alumni_db');
 
-passport.deserializeUser(function (id, cb) {
-  db.users.findById(id, function (err, user) {
-    if (err) { return cb(err); }
-    cb(null, user);
-  });
-});
+//require packages for MongoStore
+//var settings = require('./controllers/settings');
+//var connect = require('connect');  //using connect instead of express-session
+//var MongoStore = require('connect-mongo-store')(connect);
+//var store = new MongoStore('mongodb://localhost:27017/RCB_alumni_db', {cleanupInterval: 1000, ttl: 500})
+//    store.on('connect', function() {
+//      store.set('a', {a: 1}, function (err) {
+//        setTimeout(function() {
+//          store.get('a', function (err, sess) {
+//                equal(sess, null, 'session cleaned up');
+//                start()
+//          })
+//        }, 1100)
+//      })
+//    })
+//  })
+
+//mongoStore.on('connect', function() {
+//  console.log('Store is ready to use.');
+//})
+
+//mongoStore.on('error', function(err) {
+//  console.log('Store, why you ignore me?', err)
+//})      
+
+//require packages for socket.io
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
+//var io = require('socket.io').listen(server); //pass a http.server instance
+//server.listen(80);
+
+//app.get('/', function(req, res) {
+//  res.sendfile('index.html');
+//})
+
+//io.on('connection', function(socket) {
+//  console.log('a user connected');
+//});
+
+//http.listen(8080, function() {
+//  console.log('listening on *:8080');
+//})
+
+// MIDDLEWARE
+//app.use(serveStatic('public')); //dont delete app wasnt defined
+//app.use(flash()); //for flash messages stored in session //dont delete app wasnt defined
+//app.use(methodOverride()); //app not defined
+//app.use(router);
+
+
+//to store sessons in mongostore:
+//var links = '<p><a href="./public/homepage.html"</a> <a href="/views/messageboardpage.html"</a> <a href="/studentProfilePage.html"</a></p>';
+
+//use the following to set up mongostore
+//app.get('/public/homepage.html', function (req, res) {
+  //add links to each path
+//  var output = links;
+//  req.session.lastPage += req.route.path + '<br>';
+//  if(req.session.lastPage) {
+//    output += '<h2>'+req.route.path+'</h2> past page was: ' + req.session.lastPage + '. ';
+//  } else {
+//    output += 'No last page defined';
+//  }
+//  res.send(output);
+//});
+
+//app.get('/views/messageboardpage.html', function (req, res) {
+  //add links to each path
+//  var output = links;
+//  req.session.lastPage += req.route.path + '<br>';
+//  if(req.session.lastPage) {
+//    output += '<h2>'+req.route.path+'</h2> past page was: ' + req.session.lastPage + '. ';
+//  } else {
+//    output += 'No last page defined';
+//  }
+//  res.send(output);
+//});
+
+//app.get('/views/studentProfilePage.html', function (req, res) {
+  //add links to each path
+//  var output = links;
+//  req.session.lastPage += req.route.path + '<br>';
+//  if(req.session.lastPage) {
+//    output += '<h2>'+req.route.path+'</h2> past page was: ' + req.session.lastPage + '. ';
+//  } else {
+//    output += 'No last page defined';
+//  }
+//  res.send(output);
+//});
+
+//save session back to the store, replacing contents on store with contents in memory
+//useful when using web sockets, like socket.io
+//req.session.save(function(err) {
+  //session saved
+//})
+
+//app.get('/', route.index);
+//app.get('/user', user.list);
 
 // ROUTES
-var routes = require('./controllers/router.js');
-app.use('/', routes);
+//var routes = require('./controllers/router.js');
+var routes = require('./controllers/index.js');
+//app.use('/', routes);
+var User = require('/models/user.js');
 
-//defining routes 
-app.get('/',
-  function (req, res) {
-    res.render('home', { user: req.user });
-  });
-
-app.get('/login',
-  function (req, res){
-    res.render('login');
-  });
-
-app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function (req, res){
-    res.redirect('/');
-  });
-
-app.get('/logout',
-  function(req, res){
-    req.logout();
-    res.redirect('/');
-  });
-
-app.get('/studentprofilepage',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function (req, res){
-    res.render('profile', { user: req.user });
-  });
-
-app.get('/messageboardpage',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function (req, res){
-    res.render('messageboard', { user: req.user });
-  });  
-
-
-app.listen(PORT, function(){
-  console.log('listening on ',PORT);
+app.listen(PORT, function() {
+  console.log('listening on ', PORT);
 });
