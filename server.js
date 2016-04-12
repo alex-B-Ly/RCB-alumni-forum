@@ -21,6 +21,7 @@ app.use(session({
     maxAge: 60 * 60 * 1000
   }
 }));
+require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -32,8 +33,6 @@ app.use(bodyParser.urlencoded({
 // ROUTES
 var routes = require('./controllers/router.js');
 app.use('/', routes);
-
-require('./config/passport')(passport);
 
 app.listen(PORT, function(){
   console.log('listening on ',PORT);

@@ -97,7 +97,8 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
-
+    console.log(req.session);
+    console.log(req.isAuthenticated());
     res.send(userInfo);
   }); 
 });
