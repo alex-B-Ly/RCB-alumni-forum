@@ -32,7 +32,8 @@ rcb.controller('navController', function($scope, $http){
         password: $scope.loginPassword
       }
     }).then(function(result){
-      if(result.data === ""){
+      console.log('front end result:', result);
+      if(!result.data.firstName){
         $scope.loginFail = true;
         $scope.newRegister = false;
       }else{
