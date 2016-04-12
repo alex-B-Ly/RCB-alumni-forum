@@ -51,9 +51,9 @@ mongoose.createConnection('mongodb://localhost/RCB_alumni_db');
 // ROUTES
 var routes = require('./controllers/router.js');
 //var routes = require('./controllers/index.js');
-//app.use('/', routes);
+app.use('/', routes);
 var User = require('./models/user.js');
 
 app.listen(PORT, function() {
-  console.log('listening on ', PORT);
+  console.log('listening on ', + PORT);
 });
