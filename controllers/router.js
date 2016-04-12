@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // MODELS
-var User = require('/models/user.js');
+var User = require('../models/user.js');
 
 // HOMEPAGE
 router.get('/', function(req, res){

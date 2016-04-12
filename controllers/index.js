@@ -1,9 +1,13 @@
 var express = require('express');
 var passport = require('passport');
-var User = require('/models/user.js');
+var User = require('../models/user.js');
 var router = express.Router();
 
+console.log('were here in index.js');
+
 router.get('/', function (req, res) {
+  console.log('in root get route');
+  
   res.render('index', { user: req.user });
 });
 
