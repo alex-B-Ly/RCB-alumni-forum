@@ -1,5 +1,4 @@
 var express = require('express');
-
 var router = express.Router();
 
 // MODELS
@@ -28,8 +27,6 @@ router.post('/register', function(req, res){
 router.post('/login', function(req, res){
   User.findOne({ email: req.body.email }, function(err, user){
     if(err){throw err}
-
-    // TODO Use passport and bcrypt to check passwords.
     if(!user){
       console.log('user does not exist');
       res.send(err);

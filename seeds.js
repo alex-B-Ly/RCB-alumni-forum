@@ -28,3 +28,4 @@ userCreator('John', 'Doe', 'unknown', 'jdoe@aol.com', 1026, 'Who am I?', 'Back E
 userCreator('Mara', 'Tanner', 'horserider', 'mara@gmail.com', 1027, 'I have always loved horses.  Horses are my life.', 'Horse Trainer', 'I like horses and aspire to be a horse breeder and trainer.', ['Horses', 'More horses']);
 
 userCreator('Admiral', 'Ackbar', 'itsatrap', 'itsatrap@rebels.net', 1026, 'I am an admiral who has helped the rebels defeat the Empire and am now helping the resistance fight off the First Order.', 'Rebel Admiral', '... IT\'s A TRAP!!!', ['Trap Detection', 'Rebellions', 'Troop Organization', 'Starship Command']);
+
