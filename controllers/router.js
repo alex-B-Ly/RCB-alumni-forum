@@ -68,19 +68,16 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
-    console.log(req.session);
-    console.log('user auth status: ',req.isAuthenticated());
     res.send(userInfo);
   }); 
 });
 
 // PROFILE UPDATE
 router.post('/updateprof', function(req, res){
+  var passedInfo = req.body;
   // Find user and update
-  User.findOne({_id: req.session.passport.user}, function(err, user){
+  User.findOneAndUpdate({_id: req.session.passport.user}, passedInfo ,function(err, user){
     if(err){throw err}
-
-    console.log(user);
   });
 });
 

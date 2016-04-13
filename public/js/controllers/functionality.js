@@ -81,11 +81,13 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
   $scope.updateProf = function(){
     $http({
       method: 'POST',
-      url: '/updateprof'
-      // data:{
-
-      // }
-    })
+      url: '/updateprof',
+      data:{
+        'profile.jobTitle': $scope.editJobTitle,
+        'profile.jobDescription': $scope.editJobDesc,
+        'profile.bio': $scope.editBio
+      }
+    });
   }
 
 }]);
