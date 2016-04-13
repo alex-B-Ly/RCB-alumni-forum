@@ -5,7 +5,9 @@ var router = express.Router();
 var User = require('../models/user.js');
 
 // HOMEPAGE
+
 router.get('/', function(req, res){
+  console.log('root route');
   res.sendFile(process.cwd() + '/public/homepage.html');
 });
 
@@ -45,4 +47,6 @@ router.post('/login', function(req, res){
       }
     }
   });
-});      
+});  
+
+module.exports = router;    

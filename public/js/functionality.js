@@ -46,4 +46,3 @@ home.controller('homepageController', function($scope, $http){
 
 });
 
-module.exports = router;

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;  
 var passportLocalMongoose = require('passport-local-mongoose'); //handles hashing and salting of passwords
-var Schema = mongoose.Schema;                                   //plus you can define user however you like
+                                  //plus you can define user however you like
 
 var User = new Schema({
   firstName:{
