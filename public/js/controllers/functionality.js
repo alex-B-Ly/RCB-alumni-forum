@@ -47,7 +47,7 @@ rcb.controller('navController', function($scope, $http){
 });
 
 // SIDEBAR POPULATE STUDENTS
-rcb.controller('sidebarController', function($scope, $http){
+rcb.controller('sidebarController', ['$scope', '$http', function($scope, $http){
   $scope.students = [];
 
   $http({
@@ -67,7 +67,7 @@ rcb.controller('sidebarController', function($scope, $http){
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
   }
-});
+}]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
@@ -76,6 +76,18 @@ $(document).on('click', '#menu-toggle', function(e) {
 });
 
 // PROFILE EDIT CONTROLLER
-rcb.controller('editController', function($scope, $http){
-  $scope.test ="Working";
-});
+rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
+  
+  $scope.updateProf = function(){
+    $http({
+      method: 'POST',
+      url: '/updateprof'
+      // data:{
+
+      // }
+    })
+  }
+
+}]);
+
+
