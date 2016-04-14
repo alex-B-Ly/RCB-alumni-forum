@@ -61,6 +61,7 @@ rcb.controller('sidebarController', ['$scope', '$http', function($scope, $http){
   });
 
   $scope.profileModal = function(){
+    $scope.profPic = this.student.profile.pic;
     $scope.profBio = this.student.profile.bio;
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
