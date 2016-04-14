@@ -95,7 +95,6 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
       }
     });
   }
-
 }]);
 
 
