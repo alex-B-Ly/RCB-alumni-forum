@@ -155,4 +155,7 @@
         width: auto;
  
     }
+   #menu-toggle{
+    display: none !important;
+   }
 }
