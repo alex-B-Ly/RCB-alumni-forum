@@ -1,5 +1,6 @@
 var express = require('express');
-
+var bcrypt = require('bcryptjs');
+var passport = require('passport');
 var router = express.Router();
 
 // MODELS
@@ -25,29 +26,54 @@ router.post('/register', function(req, res){
 });
 
 // LOGIN
-router.post('/login', function(req, res){
-  User.findOne({ email: req.body.email }, function(err, user){
-    if(err){throw err}
+// router.post('/login', function(req, res){
+//   User.findOne({ email: req.body.email }, function(err, user){
+//     if(err){throw err}
 
-    // TODO Use passport and bcrypt to check passwords.
-    if(!user){
-      console.log('user does not exist');
+//     // TODO Use passport and bcrypt to check passwords.
+//     if(!user){
+//       console.log('user does not exist');
+//       res.send(err);
+//     }else{
+//       console.log('user exists');
+      
+//       bcrypt.compare(req.body.password, user.password, function(err, result){
+//         if(err){
+//           throw err
+//         }else if(result === false){
+//           console.log('get outta here!');
+//           res.send(err);
+//         }else if(result === true){
+//           console.log('passwords match');
+//           var userInfo = {
+//             firstName: user.firstName,
+//             lastName: user.lastName
+//           }
+//           res.send(userInfo);
+//         }
+//       });      
+//     }
+
+//   });
+// });
+
+router.post('/login', function(req, res, next){
+  passport.authenticate('local-login', function(err, user){
+    if(err){
+      res.send(err);
+    }else if(!user){
       res.send(err);
     }else{
-      console.log('user exists');
-      if(user.password === req.body.password){
+      req.login(user, function(err){
         var userInfo = {
           firstName: user.firstName,
           lastName: user.lastName
         }
-        res.send(userInfo);
-        console.log('welcome');
-      }else{
-        console.log('Credentials do not work.');
-        res.send(err);
-      }
+        res.send(userInfo);  
+      });
     }
-  });
+    
+  })(req, res, next);
 });
 
 // GET STUDENTS
@@ -73,7 +99,8 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
-
+    console.log(req.session);
+    console.log('user auth status: ',req.isAuthenticated());
     res.send(userInfo);
   }); 
 });
