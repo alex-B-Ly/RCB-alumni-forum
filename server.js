@@ -8,6 +8,10 @@ var PORT = process.env.PORT || 8080;
 
 var app = express();
 
+//SOCKET.IO
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 // MIDDLEWARE
 app.use(express.static('public'));
 
@@ -34,6 +38,6 @@ app.use(bodyParser.urlencoded({
 var routes = require('./controllers/router.js');
 app.use('/', routes);
 
-app.listen(PORT, function(){
+http.listen(PORT, function(){
   console.log('listening on ',PORT);
 });
