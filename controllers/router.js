@@ -82,8 +82,11 @@ router.post('/updateprof', function(req, res){
 });
 
 // SHOW PROFILE
-router.post('/user/:id', function(req, res){
-  console.log('Here are the params:',req.params);
+router.get('/user/:id', function(req, res){
+  User.findOne({_id:req.params.id}, function(err, user){
+    if(err){throw err}
+    console.log('here is the user: ',user);
+  });
 });
 
 

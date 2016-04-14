@@ -113,9 +113,16 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
 
 // SHOW PROFILE
 rcb.controller('profileController', ['$scope', '$http', '$state', function($scope, $http, $state){
-  $scope.test = function(){
-    console.log($state.params);
-  }
+  
+  $http({
+    method: 'GET',
+    url: '/user/' + $state.params.id,
+    data:{_id: $state.params.id}
+  });
+  // .then(function(result){
+  //   console.log(result);
+  // });
+
 }])
 
 
