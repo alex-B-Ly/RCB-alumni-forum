@@ -81,5 +81,10 @@ router.post('/updateprof', function(req, res){
   });
 });
 
+// SHOW PROFILE
+router.post('/user/:id', function(req, res){
+  console.log('Here are the params:',req.params);
+});
+
 
 module.exports = router;
