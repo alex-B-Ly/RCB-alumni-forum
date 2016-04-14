@@ -87,7 +87,11 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
         'profile.jobTitle': $scope.editJobTitle,
         'profile.jobDescription': $scope.editJobDesc,
         'profile.bio': $scope.editBio,
-        'profile.currentlyLearning': $scope.editCurrentlyLearning
+        'profile.currentlyLearning': $scope.editCurrentlyLearning,
+        'profile.socialMedia.linkedIn': $scope.editLinkedIn,
+        'profile.socialMedia.github': $scope.editGithub,
+        'profile.socialMedia.twitter': $scope.editTwitter,
+        'profile.socialMedia.facebook': $scope.editFacebook
       }
     });
   }

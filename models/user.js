@@ -50,6 +50,20 @@ var userSchema = new Schema({
     }],
     currentlyLearning:{
       type: String
+    },
+    socialMedia:{
+      linkedIn:{
+        type: String
+      },
+      github:{
+        type: String
+      },
+      twitter:{
+        type: String
+      },
+      facebook:{
+        type: String
+      }
     }
   }
 });
