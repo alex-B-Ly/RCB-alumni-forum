@@ -26,37 +26,6 @@ router.post('/register', function(req, res){
 });
 
 // LOGIN
-// router.post('/login', function(req, res){
-//   User.findOne({ email: req.body.email }, function(err, user){
-//     if(err){throw err}
-
-//     // TODO Use passport and bcrypt to check passwords.
-//     if(!user){
-//       console.log('user does not exist');
-//       res.send(err);
-//     }else{
-//       console.log('user exists');
-      
-//       bcrypt.compare(req.body.password, user.password, function(err, result){
-//         if(err){
-//           throw err
-//         }else if(result === false){
-//           console.log('get outta here!');
-//           res.send(err);
-//         }else if(result === true){
-//           console.log('passwords match');
-//           var userInfo = {
-//             firstName: user.firstName,
-//             lastName: user.lastName
-//           }
-//           res.send(userInfo);
-//         }
-//       });      
-//     }
-
-//   });
-// });
-
 router.post('/login', function(req, res, next){
   passport.authenticate('local-login', function(err, user){
     if(err){
@@ -99,13 +68,18 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
-    console.log(req.session);
-    console.log('user auth status: ',req.isAuthenticated());
     res.send(userInfo);
   }); 
 });
 
-
+// PROFILE UPDATE
+router.post('/updateprof', function(req, res){
+  var passedInfo = req.body;
+  // Find user and update
+  User.findOneAndUpdate({_id: req.session.passport.user}, passedInfo ,function(err, user){
+    if(err){throw err}
+  });
+});
 
 
 module.exports = router;

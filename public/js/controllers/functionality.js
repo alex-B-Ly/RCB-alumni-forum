@@ -47,7 +47,7 @@ rcb.controller('navController', function($scope, $http){
 });
 
 // SIDEBAR POPULATE STUDENTS
-rcb.controller('sidebarController', function($scope, $http){
+rcb.controller('sidebarController', ['$scope', '$http', function($scope, $http){
   $scope.students = [];
 
   $http({
@@ -61,13 +61,14 @@ rcb.controller('sidebarController', function($scope, $http){
   });
 
   $scope.profileModal = function(){
+    $scope.profPic = this.student.profile.pic;
     $scope.profBio = this.student.profile.bio;
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
   }
-});
+}]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
@@ -75,7 +76,33 @@ $(document).on('click', '#menu-toggle', function(e) {
   $("#wrapper").toggleClass("toggled");
 });
 
-// PROFILE EDIT CONTROLLER
-rcb.controller('editController', function($scope, $http){
-  $scope.test ="Working";
+$(document).on('click', '#profile_button', function(event) {
+  event.preventDefault();
+  $('#profileView').modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
 });
+
+// PROFILE EDIT CONTROLLER
+rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
+  
+  $scope.updateProf = function(){
+    $http({
+      method: 'POST',
+      url: '/updateprof',
+      data:{
+        'profile.pic': $scope.editPic,
+        'profile.jobTitle': $scope.editJobTitle,
+        'profile.jobDescription': $scope.editJobDesc,
+        'profile.bio': $scope.editBio,
+        'profile.currentlyLearning': $scope.editCurrentlyLearning,
+        'profile.socialMedia.linkedIn': $scope.editLinkedIn,
+        'profile.socialMedia.github': $scope.editGithub,
+        'profile.socialMedia.twitter': $scope.editTwitter,
+        'profile.socialMedia.facebook': $scope.editFacebook
+      }
+    });
+  }
+}]);
+
+

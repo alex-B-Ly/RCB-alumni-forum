@@ -33,6 +33,9 @@ var userSchema = new Schema({
     default: Date.now
   },
   profile:{
+    pic:{
+      type: String
+    },
     bio:{
       type: String
     },
@@ -44,7 +47,24 @@ var userSchema = new Schema({
     },
     skills:[{
       type: String
-    }]
+    }],
+    currentlyLearning:{
+      type: String
+    },
+    socialMedia:{
+      linkedIn:{
+        type: String
+      },
+      github:{
+        type: String
+      },
+      twitter:{
+        type: String
+      },
+      facebook:{
+        type: String
+      }
+    }
   }
 });
 
@@ -69,12 +89,5 @@ userSchema.pre('save', function(next) {
     });
   });
 });
-
-// userSchema.methods.comparePassword = function(candidatePassword, cb) {
-//   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-//     if (err) return callback(err);
-//     callback(null, isMatch);
-//   });
-// };
 
 module.exports = mongoose.model('User', userSchema);

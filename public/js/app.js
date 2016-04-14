@@ -18,7 +18,13 @@ angular.module('RCBmessenger', ['ui.router'])
   .state('profileedit', {
     url: '/profileedit',
     templateUrl: '/views/profileEdit.html'
-  });  
+  });
+
+  $stateProvider
+  .state('userprofile',{
+    url: '/user',
+    templateUrl: '/views/studentProfilePage.html'
+  });
 
   $locationProvider.html5Mode({
     enabled: true,
