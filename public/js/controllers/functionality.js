@@ -76,6 +76,8 @@ $(document).on('click', '#menu-toggle', function(e) {
   $("#wrapper").toggleClass("toggled");
 });
 
+
+
 $(document).on('click', '#profile_button', function(event) {
   event.preventDefault();
   $('#profileView').modal('hide');
