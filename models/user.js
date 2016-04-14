@@ -33,6 +33,9 @@ var userSchema = new Schema({
     default: Date.now
   },
   profile:{
+    pic:{
+      type: String
+    },
     bio:{
       type: String
     },
@@ -44,7 +47,10 @@ var userSchema = new Schema({
     },
     skills:[{
       type: String
-    }]
+    }],
+    currentlyLearning:{
+      type: String
+    }
   }
 });
 
