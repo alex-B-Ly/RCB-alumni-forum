@@ -35,4 +35,15 @@
         </div>
       </div>
     </div>
-  
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <table ng-table="githubTable" show-filter="true">
+          <tr ng-repeat="repo in $data">
+            <td data-title="'Owner'">{{ repo.owner.login }}</td>
+            <td data-title="'Repository'" sortable="'full_name'" filter="{full_name: 'text'}">{{ repo.full_name }}</td>
+            <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}">{{ repo.description }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>    
+ 

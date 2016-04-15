@@ -69,6 +69,24 @@ rcb.controller('sidebarController', function($scope, $http){
   }
 });
 
+//GITHUB TABLE
+rcb.controller('GithubController', function($scope, $http, $filter, NgTableParams) {
+  $scope.githubTable = new NgTableParams({}, {
+    getData: function($defer, params) {
+      return $http.get('https://api.github.com/users/' + $scope.username + '/repos')
+      .then(function (response) {
+        var filteredData = $filter('filter')(response.data, params.filter());
+        var sortedData = $filter('orderBy')(filteredData, params.orderBy());
+        return sortedData;
+      });
+    }  
+  });
+
+  $scope.loadRepos = function() {
+    $scope.githubTable.reload();
+  }
+});  
+
 // MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
   e.preventDefault();
