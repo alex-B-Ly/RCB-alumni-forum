@@ -47,7 +47,7 @@ rcb.controller('navController', function($scope, $http){
 });
 
 // SIDEBAR POPULATE STUDENTS
-rcb.controller('sidebarController', ['$scope', '$http', function($scope, $http){
+rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
   $scope.students = [];
 
   $http({
@@ -61,12 +61,18 @@ rcb.controller('sidebarController', ['$scope', '$http', function($scope, $http){
   });
 
   $scope.profileModal = function(){
+    $scope.userId = this.student.id;
     $scope.profPic = this.student.profile.pic;
     $scope.profBio = this.student.profile.bio;
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
+    console.log(this.student.id);
+  }
+
+  $scope.showProf = function(){
+    $state.go('userprofile', {id: this.userId});
   }
 }]);
 
@@ -106,5 +112,26 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
     });
   }
 }]);
+
+// SHOW PROFILE
+rcb.controller('profileController', ['$scope', '$http', '$state', function($scope, $http, $state){
+  $http({
+    method: 'GET',
+    url: '/user/' + $state.params.id,
+    data:{_id: $state.params.id}
+  }).then(function(result){
+    $scope.fname = result.data.firstName;
+    $scope.lname = result.data.lastName;
+    $scope.jobTitle = result.data.profile.jobTitle;
+    $scope.bio = result.data.profile.bio;
+    $scope.jobDesc = result.data.profile.jobDescription;
+    $scope.pic = result.data.profile.pic;
+    $scope.facebookLink = result.data.profile.socialMedia.facebook;
+    $scope.githubLink = result.data.profile.socialMedia.github;
+    $scope.twitterLink = result.data.profile.socialMedia.twitter;
+    $scope.linkedinLink = result.data.profile.socialMedia.linkedIn;
+  });
+
+}])
 
 

@@ -81,5 +81,21 @@ router.post('/updateprof', function(req, res){
   });
 });
 
+// SHOW PROFILE
+router.get('/user/:id', function(req, res){
+  User.findOne({_id:req.params.id}, function(err, user){
+    if(err){throw err}
+
+    var userInfo = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      section: user.section,
+      email: user.email,
+      profile: user.profile
+    }
+    res.send(userInfo);
+  });
+});
+
 
 module.exports = router;
