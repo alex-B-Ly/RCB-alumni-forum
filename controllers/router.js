@@ -85,7 +85,7 @@ router.post('/updateprof', function(req, res){
 router.get('/user/:id', function(req, res){
   User.findOne({_id:req.params.id}, function(err, user){
     if(err){throw err}
-    console.log('user info: ',user);
+
     var userInfo = {
       firstName: user.firstName,
       lastName: user.lastName,
