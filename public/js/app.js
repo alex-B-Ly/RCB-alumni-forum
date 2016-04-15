@@ -22,7 +22,7 @@ angular.module('RCBmessenger', ['ui.router'])
 
   $stateProvider
   .state('userprofile',{
-    url: '/user',
+    url: '/user/:id',
     templateUrl: '/views/studentProfilePage.html'
   });
 
