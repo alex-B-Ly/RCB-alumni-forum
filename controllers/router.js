@@ -45,8 +45,8 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 });
 
-//LOGOUT FUNCTION
-app.get('/logout', function(req, res){
+//LOGOUT 
+router.post('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });

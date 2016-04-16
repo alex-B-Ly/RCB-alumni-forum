@@ -42,6 +42,17 @@ rcb.controller('navController', function($scope, $http){
         $scope.loggedIn = true;
       }
     });
+
+    //LOGOUT
+    $scope.logout = function(){
+      $http({
+        method: 'POST',
+        url: '/logout'
+      }).then(function(result){
+        console.log('User logged out',result);
+        $scope.loggedIn=false;
+      })
+    }
   }
 
 });
