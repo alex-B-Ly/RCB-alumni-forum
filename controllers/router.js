@@ -72,6 +72,21 @@ router.get('/getstudents', function(req, res){
   }); 
 });
 
+// PROFILE EDIT USER INFO
+router.get('/profedit', function(req, res){
+  User.findOne({_id:req.session.passport.user}, function(err, user){
+    if(err){throw err}
+
+    var userInfo = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      profile: user.profile
+    }
+
+    res.send(userInfo);
+  });
+})
+
 // PROFILE UPDATE
 router.post('/updateprof', function(req, res){
   var passedInfo = req.body;

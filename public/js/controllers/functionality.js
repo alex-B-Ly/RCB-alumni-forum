@@ -44,6 +44,16 @@ rcb.controller('navController', function($scope, $http){
     });
   }
 
+  $scope.editProfUserInfo = function(){
+
+    $http({
+      method: 'GET',
+      url: '/profedit'
+    }).then(function(userInfo){
+      console.log(userInfo);
+    });    
+  }
+
 });
 
 // SIDEBAR POPULATE STUDENTS
