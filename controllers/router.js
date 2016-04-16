@@ -48,7 +48,6 @@ router.post('/login', function(req, res, next){
 //LOGOUT 
 router.post('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
 });
 
 // GET STUDENTS
