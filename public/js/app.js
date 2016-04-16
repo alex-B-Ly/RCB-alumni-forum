@@ -1,4 +1,4 @@
-angular.module('RCBmessenger', ['ui.router'])
+angular.module('RCBmessenger', ['ui.router', 'ngTable'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/welcome');
 

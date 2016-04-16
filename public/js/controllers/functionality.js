@@ -115,7 +115,7 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
 }]);
 
 // SHOW PROFILE
-rcb.controller('profileController', ['$scope', '$http', '$state', function($scope, $http, $state){
+rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'NgTableParams', function($scope, $http, $state, $filter, NgTableParams){
 
   $http({
     method: 'GET',
@@ -130,12 +130,26 @@ rcb.controller('profileController', ['$scope', '$http', '$state', function($scop
     $scope.pic = result.data.profile.pic;
     $scope.facebookLink = result.data.profile.socialMedia.facebook;
     $scope.githubLink = result.data.profile.socialMedia.github;
+    $scope.githubUsername = result.data.profile.socialMedia.githubUsername;
     $scope.twitterLink = result.data.profile.socialMedia.twitter;
     $scope.linkedinLink = result.data.profile.socialMedia.linkedIn;
   });
 
   // TODO Add Github table functionality below
-
+  $scope.githubTable = new NgTableParams({}, {
+    getData: function($defer, params) {
+      return $http.get('https://api.github.com/users/' + $scope.githubUsername + '/repos')
+      .then(function (response) {
+        var filteredData = $filter('filter')(response.data, params.filter());
+        var sortedData = $filter('orderBy')(filteredData, params.orderBy());
+        return sortedData;
+      });  
+    }
+  });
+  
+  $scope.loadRepos = function() {
+    $scope.githubTable.reload();
+  }  
 }]);
 
 

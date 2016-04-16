@@ -35,7 +35,14 @@
             </div>
           <hr>
           <!-- TODO Insert angular table -->
-          
+          <button ng-click="loadRepos()">Load</button>
+          <table ng-table="githubTable" show-filter="true">
+            <tr ng-repeat="repo in $data">
+              <td data-title="'Owner'"> {{ repo.owner.login }} </td>
+              <td data-title="'Name of Repository'" sortable="'full_name'" filter="{full_name: 'text'}"> {{ repo.full_name }} </td>
+              <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}"> {{ repo.description }} </td>
+            </tr>
+          </table>
           <hr>
           <a href="{{ facebookLink }}" class="btn btn-primary" target="_blank">facebook</a>
           <a href="{{ githubLink }}" class="btn btn-primary" target="_blank">github</a>
