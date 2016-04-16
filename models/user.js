@@ -58,6 +58,9 @@ var userSchema = new Schema({
       github:{
         type: String
       },
+      githubUsername:{
+        type: String
+      },
       twitter:{
         type: String
       },
