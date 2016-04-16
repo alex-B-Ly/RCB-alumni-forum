@@ -1,21 +1,20 @@
 
-    <div class="container" ng-controller="profileController">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h2>RCB User Profile Template </h2>
-          <br>
-        </div>
+  <div class="container" ng-controller="profileController">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="header">RCB User Profile </h2>
+        <br>
       </div>
     </div>
     <!--USER PROFILE ROW STARTS -->
     <div class="row">
       <div class="col-sm-3">
-        <div class="user-wrapper">
-          <img src="#" class="img-responsive">
+        <div class="user-wrapper-student">
+          <img src="{{ pic }}" class="img-responsive">
           <div class="description">
-            <h4> Chris Campbell</h4>
-            <h5> <strong>Web Developer</strong></h5>
-            <p>Pellentesque elementum dapibuse convallis.</p>
+            <h4>{{ fname }} {{ lname }}</h4>
+            <h5> <strong>{{ jobTitle }}</strong></h5>
+            <p>{{ jobDesc }}</p>
             <hr>
             <a href="#" class="btn btn-danger btn-sm">message me</a>
           </div>
@@ -23,16 +22,35 @@
       </div>
       <div class="col-sm-9 user-wrapper">
         <div class="description">
-          <h3>Chris' Biography</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit egestas eros, ut maximus magna blandit ut. Suspendisse vel molestie sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce sit amet egestas dui, vitae tincidunt justo.</p>
-            
+          <h3 class="bio">Biography:</h3>
+          <p>{{ bio }}</p>
           <hr>
-          <a href="#" class="btn btn-primary">facebook</a>
-          <a href="#" class="btn btn-primary">github</a>
-          <a href="#" class="btn btn-primary">twitter</a>
-          <a href="#" class="btn btn-primary">linkedin</a>
+          <!-- Skill Section -->
+            <div>
+              <ul class="skills">
+                Skills
+                <li ng-repeat>
+                </li>
+              </ul>
+            </div>
+          <hr>
+          <!-- TODO Insert angular table -->
+          <button ng-click="loadRepos()">Load</button>
+          <table ng-table="githubTable" show-filter="true">
+            <tr ng-repeat="repo in $data">
+              <td data-title="'Owner'"> {{ repo.owner.login }} </td>
+              <td data-title="'Name of Repository'" sortable="'full_name'" filter="{full_name: 'text'}"> {{ repo.full_name }} </td>
+              <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}"> {{ repo.description }} </td>
+            </tr>
+          </table>
+          <hr>
+          <a href="{{ facebookLink }}" class="btn btn-primary" target="_blank">facebook</a>
+          <a href="{{ githubLink }}" class="btn btn-primary" target="_blank">github</a>
+          <a href="{{ twitterLink }}" class="btn btn-primary" target="_blank">twitter</a>
+          <a href="{{ linkedinLink }}" class="btn btn-primary" target="_blank">linkedin</a>
 
         </div>
       </div>
     </div>
+  </div>
   
