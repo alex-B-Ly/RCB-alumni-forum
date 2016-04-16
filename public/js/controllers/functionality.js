@@ -32,7 +32,8 @@ rcb.controller('navController', function($scope, $http){
         password: $scope.loginPassword
       }
     }).then(function(result){
-      if(result.data === ""){
+      console.log('front end result:', result);
+      if(!result.data.firstName){
         $scope.loginFail = true;
         $scope.newRegister = false;
       }else{
@@ -46,7 +47,7 @@ rcb.controller('navController', function($scope, $http){
 });
 
 // SIDEBAR POPULATE STUDENTS
-rcb.controller('sidebarController', function($scope, $http){
+rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
   $scope.students = [];
 
   $http({
@@ -60,12 +61,20 @@ rcb.controller('sidebarController', function($scope, $http){
   });
 
   $scope.profileModal = function(){
+    $scope.userId = this.student.id;
+    $scope.profPic = this.student.profile.pic;
     $scope.profBio = this.student.profile.bio;
     $scope.profFirstName = this.student.firstName;
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
+    $scope.profJobTitle = this.student.profile.jobTitle;
+    console.log(this.student.id);
   }
-});
+
+  $scope.showProf = function(){
+    $state.go('userprofile', {id: this.userId});
+  }
+}]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
 $(document).on('click', '#menu-toggle', function(e) {
@@ -73,7 +82,74 @@ $(document).on('click', '#menu-toggle', function(e) {
   $("#wrapper").toggleClass("toggled");
 });
 
-// PROFILE EDIT CONTROLLER
-rcb.controller('editController', function($scope, $http){
-  $scope.test ="Working";
+
+
+$(document).on('click', '#profile_button', function(event) {
+  event.preventDefault();
+  $('#profileView').modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
 });
+
+// PROFILE EDIT CONTROLLER
+rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
+  
+  $scope.updateProf = function(){
+    $http({
+      method: 'POST',
+      url: '/updateprof',
+      data:{
+        'profile.pic': $scope.editPic,
+        'profile.jobTitle': $scope.editJobTitle,
+        'profile.jobDescription': $scope.editJobDesc,
+        'profile.bio': $scope.editBio,
+        'profile.currentlyLearning': $scope.editCurrentlyLearning,
+        'profile.socialMedia.linkedIn': $scope.editLinkedIn,
+        'profile.socialMedia.github': $scope.editGithub,
+        'profile.socialMedia.githubUsername': $scope.editGithubUsername,
+        'profile.socialMedia.twitter': $scope.editTwitter,
+        'profile.socialMedia.facebook': $scope.editFacebook
+      }
+    });
+  }
+}]);
+
+// SHOW PROFILE
+rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'NgTableParams', function($scope, $http, $state, $filter, NgTableParams){
+
+  $http({
+    method: 'GET',
+    url: '/user/' + $state.params.id,
+    data:{_id: $state.params.id}
+  }).then(function(result){
+    $scope.fname = result.data.firstName;
+    $scope.lname = result.data.lastName;
+    $scope.jobTitle = result.data.profile.jobTitle;
+    $scope.bio = result.data.profile.bio;
+    $scope.jobDesc = result.data.profile.jobDescription;
+    $scope.pic = result.data.profile.pic;
+    $scope.facebookLink = result.data.profile.socialMedia.facebook;
+    $scope.githubLink = result.data.profile.socialMedia.github;
+    $scope.githubUsername = result.data.profile.socialMedia.githubUsername;
+    $scope.twitterLink = result.data.profile.socialMedia.twitter;
+    $scope.linkedinLink = result.data.profile.socialMedia.linkedIn;
+  });
+
+  // TODO Add Github table functionality below
+  $scope.githubTable = new NgTableParams({}, {
+    getData: function($defer, params) {
+      return $http.get('https://api.github.com/users/' + $scope.githubUsername + '/repos')
+      .then(function (response) {
+        var filteredData = $filter('filter')(response.data, params.filter());
+        var sortedData = $filter('orderBy')(filteredData, params.orderBy());
+        return sortedData;
+      });  
+    }
+  });
+  
+  $scope.loadRepos = function() {
+    $scope.githubTable.reload();
+  }  
+}]);
+
+

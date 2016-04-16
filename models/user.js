@@ -33,6 +33,9 @@ var userSchema = new Schema({
     default: Date.now
   },
   profile:{
+    pic:{
+      type: String
+    },
     bio:{
       type: String
     },
@@ -44,37 +47,50 @@ var userSchema = new Schema({
     },
     skills:[{
       type: String
-    }]
+    }],
+    currentlyLearning:{
+      type: String
+    },
+    socialMedia:{
+      linkedIn:{
+        type: String
+      },
+      github:{
+        type: String
+      },
+      githubUsername:{
+        type: String
+      },
+      twitter:{
+        type: String
+      },
+      facebook:{
+        type: String
+      }
+    }
   }
 });
 
-// userSchema.pre('save', function(next) {
-//   var user = this;
+userSchema.pre('save', function(next) {
+  var user = this;
 
-//   //only hash passwords that havent been modified/are new
-//   if (!user.isModified('password')) return next();
+  //only hash passwords that havent been modified/are new
+  if (!user.isModified('password')) return next();
 
-//   //generate salt
-//   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-//     if (err) return next (err);
+  //generate salt
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (err) return next (err);
   
 
-//     //hash password with salt
-//     bcrypt.hash(user.password, salt, function(err, hash) {
-//       if (err) return next (err);
+    //hash password with salt
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      if (err) return next (err);
     
-//       //override cleartxt password with hashed password
-//       user.password = hash;
-//       next();
-//     });
-//   });
-// });
-
-// userSchema.methods.comparePassword = function(candidatePassword, cb) {
-//   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-//     if (err) return callback(err);
-//     callback(null, isMatch);
-//   });
-// };
+      //override cleartxt password with hashed password
+      user.password = hash;
+      next();
+    });
+  });
+});
 
 module.exports = mongoose.model('User', userSchema);

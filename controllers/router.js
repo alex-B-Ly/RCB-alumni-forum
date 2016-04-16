@@ -1,5 +1,6 @@
 var express = require('express');
-
+var bcrypt = require('bcryptjs');
+var passport = require('passport');
 var router = express.Router();
 
 // MODELS
@@ -25,29 +26,23 @@ router.post('/register', function(req, res){
 });
 
 // LOGIN
-router.post('/login', function(req, res){
-  User.findOne({ email: req.body.email }, function(err, user){
-    if(err){throw err}
-
-    // TODO Use passport and bcrypt to check passwords.
-    if(!user){
-      console.log('user does not exist');
+router.post('/login', function(req, res, next){
+  passport.authenticate('local-login', function(err, user){
+    if(err){
+      res.send(err);
+    }else if(!user){
       res.send(err);
     }else{
-      console.log('user exists');
-      if(user.password === req.body.password){
+      req.login(user, function(err){
         var userInfo = {
           firstName: user.firstName,
           lastName: user.lastName
         }
-        res.send(userInfo);
-        console.log('welcome');
-      }else{
-        console.log('Credentials do not work.');
-        res.send(err);
-      }
+        res.send(userInfo);  
+      });
     }
-  });
+    
+  })(req, res, next);
 });
 
 // GET STUDENTS
@@ -73,12 +68,34 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
-
     res.send(userInfo);
   }); 
 });
 
+// PROFILE UPDATE
+router.post('/updateprof', function(req, res){
+  var passedInfo = req.body;
+  // Find user and update
+  User.findOneAndUpdate({_id: req.session.passport.user}, passedInfo ,function(err, user){
+    if(err){throw err}
+  });
+});
 
+// SHOW PROFILE
+router.get('/user/:id', function(req, res){
+  User.findOne({_id:req.params.id}, function(err, user){
+    if(err){throw err}
+
+    var userInfo = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      section: user.section,
+      email: user.email,
+      profile: user.profile
+    }
+    res.send(userInfo);
+  });
+});
 
 
 module.exports = router;

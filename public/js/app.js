@@ -1,4 +1,4 @@
-angular.module('RCBmessenger', ['ui.router'])
+angular.module('RCBmessenger', ['ui.router', 'ngTable'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/welcome');
 
@@ -18,7 +18,13 @@ angular.module('RCBmessenger', ['ui.router'])
   .state('profileedit', {
     url: '/profileedit',
     templateUrl: '/views/profileEdit.html'
-  });  
+  });
+
+  $stateProvider
+  .state('userprofile',{
+    url: '/user/:id',
+    templateUrl: '/views/studentProfilePage.html'
+  });
 
   $locationProvider.html5Mode({
     enabled: true,
