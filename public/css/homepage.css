@@ -36,4 +36,21 @@ body{
   text-shadow: 0 0 35px #D6D6D6;
 }
 
-/*experimentation*/
+/*studentProfilePage*/
+
+.bio {
+  color: red;
+}
+
+.header {
+  text-decoration: underline;
+  font-weight: bold;
+  color: red;
+}
+
+.skills {
+  font-weight: bold;
+  color:red;
+}
+
+
