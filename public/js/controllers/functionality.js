@@ -106,6 +106,7 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
         'profile.currentlyLearning': $scope.editCurrentlyLearning,
         'profile.socialMedia.linkedIn': $scope.editLinkedIn,
         'profile.socialMedia.github': $scope.editGithub,
+        'profile.socialMedia.githubUsername': $scope.editGithubUsername,
         'profile.socialMedia.twitter': $scope.editTwitter,
         'profile.socialMedia.facebook': $scope.editFacebook
       }
