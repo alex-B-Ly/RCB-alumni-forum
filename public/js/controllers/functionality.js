@@ -115,6 +115,7 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
 
 // SHOW PROFILE
 rcb.controller('profileController', ['$scope', '$http', '$state', function($scope, $http, $state){
+
   $http({
     method: 'GET',
     url: '/user/' + $state.params.id,
@@ -132,6 +133,8 @@ rcb.controller('profileController', ['$scope', '$http', '$state', function($scop
     $scope.linkedinLink = result.data.profile.socialMedia.linkedIn;
   });
 
-}])
+  // TODO Add Github table functionality below
+
+}]);
 
 
