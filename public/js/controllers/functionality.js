@@ -115,7 +115,7 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
 }]);
 
 // SHOW PROFILE
-rcb.controller('profileController', ['$scope', '$http', '$state', function($scope, $http, $state, $filter, NgTableParams){
+rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'NgTableParams', function($scope, $http, $state, $filter, NgTableParams){
 
   $http({
     method: 'GET',
@@ -145,6 +145,11 @@ rcb.controller('profileController', ['$scope', '$http', '$state', function($scop
         return sortedData;
       });  
     }
+  });
+  
+  $scope.loadRepos = function() {
+    $scope.githubTable.reload();
+  }  
 }]);
 
 
