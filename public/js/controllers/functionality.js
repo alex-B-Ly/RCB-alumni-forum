@@ -43,11 +43,10 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 
   //LOGOUT
   $scope.logout = function(){
+    $scope.loggedIn = false;
     $http({
       url: '/logout',
       method: 'POST'
-    }).then(function(result){
-      $state.go('welcome');
     });
   }
 
