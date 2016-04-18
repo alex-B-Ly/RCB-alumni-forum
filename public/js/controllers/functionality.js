@@ -1,7 +1,7 @@
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
-rcb.controller('navController', function($scope, $http){
+rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
 
   // REGISTER
   $scope.register = function(){
@@ -44,17 +44,7 @@ rcb.controller('navController', function($scope, $http){
     });
   }
 
-  $scope.editProfUserInfo = function(){
-
-    $http({
-      method: 'GET',
-      url: '/profedit'
-    }).then(function(userInfo){
-      console.log(userInfo);
-    });    
-  }
-
-});
+}]);
 
 // SIDEBAR POPULATE STUDENTS
 rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
@@ -102,8 +92,15 @@ $(document).on('click', '#profile_button', function(event) {
 });
 
 // PROFILE EDIT CONTROLLER
-rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
+rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
   
+  $http({
+    method: 'GET',
+    url: '/profedit',
+  }).then(function(user){
+    console.log('stuff: ',user);
+  });
+
   $scope.updateProf = function(){
     $http({
       method: 'POST',
