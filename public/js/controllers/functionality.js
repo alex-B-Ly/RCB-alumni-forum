@@ -89,7 +89,8 @@ $(document).on('click', '#profile_button', function(event) {
 
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
-  
+  $scope.newSkills = [];
+
   $http({
     method: 'GET',
     url: '/profedit',
@@ -115,9 +116,11 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
         'profile.socialMedia.github': $scope.editGithub,
         'profile.socialMedia.githubUsername': $scope.editGithubUsername,
         'profile.socialMedia.twitter': $scope.editTwitter,
-        'profile.socialMedia.facebook': $scope.editFacebook
+        'profile.socialMedia.facebook': $scope.editFacebook,
+        'newSkills': $scope.newSkills
       }
     });
+    $scope.newSkills = [];
   }
 
   $scope.skillAdd = function(){
@@ -125,13 +128,7 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
       return;
     }
 
-    $http({
-      method: 'POST',
-      url: '/addskill',
-      data:{
-        'newSkill': $scope.editAddSkill
-      }
-    });
+    $scope.newSkills.push($scope.editAddSkill);
     $scope.editAddSkill = "";
   }
 
@@ -151,6 +148,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.bio = result.data.profile.bio;
     $scope.jobDesc = result.data.profile.jobDescription;
     $scope.pic = result.data.profile.pic;
+    $scope.skills = result.data.profile.skills;
     $scope.facebookLink = result.data.profile.socialMedia.facebook;
     $scope.githubLink = result.data.profile.socialMedia.github;
     $scope.githubUsername = result.data.profile.socialMedia.githubUsername;

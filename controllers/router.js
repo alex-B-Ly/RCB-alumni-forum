@@ -88,15 +88,15 @@ router.get('/profedit', function(req, res){
 })
 
 // PROFILE ADD SKILL
-router.post('/addskill', function(req, res){
-  var newSkill ={
-    skill: req.body.newSkill
-  }
+// router.post('/addskill', function(req, res){
+//   var newSkill ={
+//     skill: req.body.newSkill
+//   }
 
-  User.findOneAndUpdate({_id: req.session.passport.user}, {$push: {'profile.skills': newSkill}}, function(err){
-    if(err){throw err}
-  });
-});
+  // User.findOneAndUpdate({_id: req.session.passport.user}, {$pushAll: {'profile.skills': newSkill}}, function(err){
+  //   if(err){throw err}
+  // });
+// });
 
 // PROFILE UPDATE
 router.post('/updateprof', function(req, res){
@@ -105,6 +105,12 @@ router.post('/updateprof', function(req, res){
   User.findOneAndUpdate({_id: req.session.passport.user}, passedInfo ,function(err, user){
     if(err){throw err}
   });
+
+  User.findOneAndUpdate({_id: req.session.passport.user}, {$pushAll: {'profile.skills': req.body.newSkills}}, function(err){
+    if(err){throw err}
+  });
+
+  console.log(req.body);
 });
 
 // SHOW PROFILE
