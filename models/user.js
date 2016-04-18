@@ -46,7 +46,7 @@ var userSchema = new Schema({
       type: String
     },
     skills:[{
-      type: String
+      type:String
     }],
     currentlyLearning:{
       type: String

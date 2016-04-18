@@ -67,4 +67,16 @@ body{
   color:red;
 }
 
+/* Profile Edit Page */
 
+.skill-edit{
+  display: inline-block;
+}
+
+.skills_to_be{
+  background: red;
+  font-size: 1em;
+  color: #fff;
+  padding: 3px;
+  margin-right: 5px;
+}

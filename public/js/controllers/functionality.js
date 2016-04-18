@@ -79,8 +79,7 @@ $(document).on('click', '#menu-toggle', function(e) {
 });
 
 
-
-
+// DISGUSTING MODAL FIX
 $(document).on('click', '#profile_button', function(event) {
   event.preventDefault();
   $('#profileView').modal('hide');
@@ -90,7 +89,8 @@ $(document).on('click', '#profile_button', function(event) {
 
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
-  
+  $scope.newSkills = [];
+
   $http({
     method: 'GET',
     url: '/profedit',
@@ -99,7 +99,7 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
     $scope.jobTitleInfo = userStuff.profile.jobTitle;
     $scope.jobDescriptionInfo = userStuff.profile.jobDescription;
     $scope.bioInfo = userStuff.profile.bio;
-    $scope.currentlyLearningInfo = user.profile.currentlyLearning;
+    // $scope.currentlyLearningInfo = user.profile.currentlyLearning;
   });
 
   $scope.updateProf = function(){
@@ -116,10 +116,22 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
         'profile.socialMedia.github': $scope.editGithub,
         'profile.socialMedia.githubUsername': $scope.editGithubUsername,
         'profile.socialMedia.twitter': $scope.editTwitter,
-        'profile.socialMedia.facebook': $scope.editFacebook
+        'profile.socialMedia.facebook': $scope.editFacebook,
+        'newSkills': $scope.newSkills
       }
     });
+    $scope.newSkills = [];
   }
+
+  $scope.skillAdd = function(){
+    if($scope.editAddSkill.length === 0){
+      return;
+    }
+
+    $scope.newSkills.push($scope.editAddSkill);
+    $scope.editAddSkill = "";
+  }
+
 }]);
 
 // SHOW PROFILE
@@ -136,6 +148,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.bio = result.data.profile.bio;
     $scope.jobDesc = result.data.profile.jobDescription;
     $scope.pic = result.data.profile.pic;
+    $scope.skills = result.data.profile.skills;
     $scope.facebookLink = result.data.profile.socialMedia.facebook;
     $scope.githubLink = result.data.profile.socialMedia.github;
     $scope.githubUsername = result.data.profile.socialMedia.githubUsername;
