@@ -159,7 +159,7 @@
     display: none !important;
    }
 
-   #section {
+   .section {
     float: right;
     padding-right: 10px;
    }
