@@ -65,7 +65,6 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
-    console.log('Student BS: ',this.student.profile.skills);
   }
 
   $scope.showProf = function(){
@@ -122,6 +121,10 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
   }
 
   $scope.skillAdd = function(){
+    if($scope.editAddSkill.length === 0){
+      return;
+    }
+
     $http({
       method: 'POST',
       url: '/addskill',
