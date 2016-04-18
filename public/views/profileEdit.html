@@ -26,7 +26,9 @@
               </div>
 
               <div class="form-group text-center">
-                <p>Skills:</p>
+                <p ng-show="newSkills.length > 0">Skills to be added</p>
+                <span class="skills_to_be" ng-repeat="skill in newSkills">{{skill}}</span>
+                <p>Add Skills</p>
                 <input class="skill-edit" type="text" class="form-control" ng-model="editAddSkill" placeholder="Add Skill" />
                 <a class="skill-edit" href="#" ng-click="skillAdd()">Add Skill</a>
               </div>
