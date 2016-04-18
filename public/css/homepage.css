@@ -36,6 +36,20 @@ body{
   text-shadow: 0 0 35px #D6D6D6;
 }
 
+.nav-username{
+  font-size: 1.3em;
+  color: #fff;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.glyphicon-cog{
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding-top: 10px;
+}
+
 /*studentProfilePage*/
 
 .bio {
