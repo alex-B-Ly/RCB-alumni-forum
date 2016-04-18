@@ -45,6 +45,11 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 });
 
+//LOGOUT 
+router.post('/logout', function(req, res){
+  req.logout();
+});
+
 // GET STUDENTS
 router.get('/getstudents', function(req, res){
   User.find({}, function(err, users){
