@@ -65,7 +65,7 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
-    console.log('Student BS: ',this.student);
+    console.log('Student BS: ',this.student.profile.skills);
   }
 
   $scope.showProf = function(){

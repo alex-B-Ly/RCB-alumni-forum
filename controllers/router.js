@@ -89,8 +89,11 @@ router.get('/profedit', function(req, res){
 
 // PROFILE ADD SKILL
 router.post('/addskill', function(req, res){
+  var newSkill ={
+    skill: req.body.newSkill
+  }
 
-  User.findOneAndUpdate({_id: req.session.passport.user}, {$push: {'profile.skills': req.body.newSkill}}, function(err){
+  User.findOneAndUpdate({_id: req.session.passport.user}, {$push: {'profile.skills': newSkill}}, function(err){
     if(err){throw err}
   });
 });
