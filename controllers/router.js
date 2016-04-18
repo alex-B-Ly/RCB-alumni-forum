@@ -45,6 +45,11 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 });
 
+//LOGOUT 
+router.post('/logout', function(req, res){
+  req.session.destroy();
+});
+
 // GET STUDENTS
 router.get('/getstudents', function(req, res){
   User.find({}, function(err, users){
@@ -68,6 +73,7 @@ router.get('/getstudents', function(req, res){
 
       userInfo.push(theUser);
     }
+    console.log(req.session);
     res.send(userInfo);
   }); 
 });

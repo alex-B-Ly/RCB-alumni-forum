@@ -50,6 +50,10 @@ body{
   padding-top: 10px;
 }
 
+.loggedinLink{
+  cursor: pointer;
+}
+
 /*studentProfilePage*/
 
 .bio {

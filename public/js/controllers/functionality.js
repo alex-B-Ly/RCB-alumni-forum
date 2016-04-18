@@ -41,6 +41,16 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
     });
   }
 
+  //LOGOUT
+  $scope.logout = function(){
+    $http({
+      url: '/logout',
+      method: 'POST'
+    }).then(function(result){
+      $state.go('welcome');
+    });
+  }
+
 }]);
 
 // SIDEBAR POPULATE STUDENTS
