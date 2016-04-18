@@ -107,9 +107,9 @@ router.post('/updateprof', function(req, res){
     if(err){throw err}
   });
 
-  User.findOneAndUpdate({_id: req.session.passport.user}, {$pushAll: {'profile.skills': req.body.newSkills}}, {upsert: true}, function(err){
-    if(err){throw err}
-  });
+  // User.findOneAndUpdate({_id: req.session.passport.user}, {$pushAll: {'profile.skills': req.body.newSkills}}, {upsert: true}, function(err){
+  //   if(err){throw err}
+  // });
 
   console.log(req.body);
 });
