@@ -1,7 +1,7 @@
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
-rcb.controller('navController', function($scope, $http){
+rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
 
   // REGISTER
   $scope.register = function(){
@@ -16,7 +16,6 @@ rcb.controller('navController', function($scope, $http){
         section: $scope.registerSection
       }
     }).then(function(result){
-      console.log(result);
       $scope.newRegister = true;
       $scope.loginFail = false;
     });
@@ -32,19 +31,17 @@ rcb.controller('navController', function($scope, $http){
         password: $scope.loginPassword
       }
     }).then(function(result){
-      console.log('front end result:', result);
       if(!result.data.firstName){
         $scope.loginFail = true;
         $scope.newRegister = false;
       }else{
-        console.log(result.data);
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
         $scope.loggedIn = true;
       }
     });
   }
 
-});
+}]);
 
 // SIDEBAR POPULATE STUDENTS
 rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
@@ -68,7 +65,6 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
-    console.log(this.student.id);
   }
 
   $scope.showProf = function(){
@@ -92,8 +88,19 @@ $(document).on('click', '#profile_button', function(event) {
 });
 
 // PROFILE EDIT CONTROLLER
-rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
+rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
   
+  $http({
+    method: 'GET',
+    url: '/profedit',
+  }).then(function(user){
+    var userStuff = user.data;
+    $scope.jobTitleInfo = userStuff.profile.jobTitle;
+    $scope.jobDescriptionInfo = userStuff.profile.jobDescription;
+    $scope.bioInfo = userStuff.profile.bio;
+    $scope.currentlyLearningInfo = user.profile.currentlyLearning;
+  });
+
   $scope.updateProf = function(){
     $http({
       method: 'POST',
