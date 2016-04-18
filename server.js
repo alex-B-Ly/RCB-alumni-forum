@@ -5,6 +5,10 @@ var session = require('express-session');
 var passport = require('passport');
 var db = require('./config/connection.js');
 var PORT = process.env.PORT || 8080;
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
+//var io = require('socket.io').listen(server);
+//server.listen(80);
 
 var app = express();
 

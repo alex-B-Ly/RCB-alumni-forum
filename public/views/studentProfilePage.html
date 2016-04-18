@@ -36,7 +36,7 @@
           <hr>
           <!-- TODO Insert angular table -->
           <button ng-click="loadRepos()">Load</button>
-          <table ng-table="githubTable" show-filter="true">
+          <table ng-table="githubTable" show-filter="true" class="table table-bordered">
             <tr ng-repeat="repo in $data">
               <td data-title="'Name of Repository'" sortable="'full_name'" filter="{full_name: 'text'}"> {{ repo.full_name }} </td>
               <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}"> {{ repo.description }} </td>
