@@ -98,7 +98,11 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
     method: 'GET',
     url: '/profedit',
   }).then(function(user){
-    console.log('stuff: ',user);
+    var userStuff = user.data;
+    $scope.jobTitleInfo = userStuff.profile.jobTitle;
+    $scope.jobDescriptionInfo = userStuff.profile.jobDescription;
+    $scope.bioInfo = userStuff.profile.bio;
+    $scope.currentlyLearningInfo = user.profile.currentlyLearning;
   });
 
   $scope.updateProf = function(){
