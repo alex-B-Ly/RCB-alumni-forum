@@ -99,7 +99,7 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
     $scope.jobTitleInfo = userStuff.profile.jobTitle;
     $scope.jobDescriptionInfo = userStuff.profile.jobDescription;
     $scope.bioInfo = userStuff.profile.bio;
-    $scope.currentlyLearningInfo = user.profile.currentlyLearning;
+    // $scope.currentlyLearningInfo = user.profile.currentlyLearning;
   });
 
   $scope.updateProf = function(){
@@ -120,6 +120,18 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
       }
     });
   }
+
+  $scope.skillAdd = function(){
+    $http({
+      method: 'POST',
+      url: '/addskill',
+      data:{
+        'newSkill': $scope.editAddSkill
+      }
+    })
+    $scope.editAddSkill = "";
+  }
+
 }]);
 
 // SHOW PROFILE
