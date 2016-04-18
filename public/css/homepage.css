@@ -67,4 +67,8 @@ body{
   color:red;
 }
 
+/* Profile Edit Page */
 
+.skill-edit{
+  display: inline-block;
+}
