@@ -79,8 +79,7 @@ $(document).on('click', '#menu-toggle', function(e) {
 });
 
 
-
-
+// DISGUSTING MODAL FIX
 $(document).on('click', '#profile_button', function(event) {
   event.preventDefault();
   $('#profileView').modal('hide');
@@ -128,7 +127,7 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
       data:{
         'newSkill': $scope.editAddSkill
       }
-    })
+    });
     $scope.editAddSkill = "";
   }
 
