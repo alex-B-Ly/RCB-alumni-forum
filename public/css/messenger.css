@@ -158,4 +158,9 @@
    #menu-toggle{
     display: none !important;
    }
+
+   .section {
+    float: right;
+    padding-right: 10px;
+   }
 }
