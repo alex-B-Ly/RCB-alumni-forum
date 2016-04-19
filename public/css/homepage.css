@@ -89,3 +89,11 @@ body{
   margin-right: 5px;
 }
 
+
+/* PROFILE MODAL */
+.profile-modal {
+  width: 100%;
+  max-width: 300px;
+}
+
+
