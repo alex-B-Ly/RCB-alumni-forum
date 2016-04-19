@@ -73,8 +73,8 @@
             <img class="img-responsive" src="{{ profPic }}" alt="Picture of {{ profFirstName }} {{ profLastName }}">
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <p>{{ profJobTitle }}</p>
-            <!-- <span>Skills: </span>
-            <span class="label label-info" ng-repeat="skill in userSkills">{{ skill }}</span> -->
+            <span>Skills: </span>
+            <span class="label label-info" ng-repeat="skill in userSkills track by $index">{{ skill }}</span>
             <br>          
           </center>
           <hr>
