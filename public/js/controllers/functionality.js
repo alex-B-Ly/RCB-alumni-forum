@@ -85,6 +85,7 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
 
   $scope.sendMessage = function(){
     socket.emit('message', {stuff: $scope.message});
+    // TODO Save $scope.message into DB
     $scope.message = "";
   }
 
