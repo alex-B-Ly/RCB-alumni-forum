@@ -39,6 +39,8 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
         $scope.loggedIn = true;
       }
     });
+    $scope.loginEmail = '';
+    $scope.loginPassword = '';
   }
 
   //LOGOUT
