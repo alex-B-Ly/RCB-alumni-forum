@@ -80,6 +80,12 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
   $scope.showProf = function(){
     $state.go('userprofile', {id: this.userId});
   }
+
+  $scope.sendMessage = function(){
+    socket.emit('message', {stuff: $scope.message});
+    $scope.message = "";
+  }
+
 }]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
@@ -99,7 +105,7 @@ $(document).on('click', '#profile_button', function(event) {
 
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
-  // $scope.newSkills = [];
+  $scope.newSkills = [];
 
   $http({
     method: 'GET',
@@ -125,21 +131,21 @@ rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, 
         'profile.socialMedia.github': $scope.editGithub,
         'profile.socialMedia.githubUsername': $scope.editGithubUsername,
         'profile.socialMedia.twitter': $scope.editTwitter,
-        'profile.socialMedia.facebook': $scope.editFacebook
-        // 'newSkills': $scope.newSkills
+        'profile.socialMedia.facebook': $scope.editFacebook,
+        'newSkills': $scope.newSkills
       }
     });
     // console.log('newSkills arr: ',$scope.newSkills)
   }
 
-  // $scope.skillAdd = function(){
-  //   if($scope.editAddSkill.length === 0){
-  //     return;
-  //   }
+  $scope.skillAdd = function(){
+    if($scope.editAddSkill.length === 0){
+      return;
+    }
 
-  //   $scope.newSkills.push($scope.editAddSkill);
-  //   $scope.editAddSkill = "";
-  // }
+    $scope.newSkills.push($scope.editAddSkill);
+    $scope.editAddSkill = "";
+  }
 
 }]);
 
@@ -157,7 +163,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.bio = result.data.profile.bio;
     $scope.jobDesc = result.data.profile.jobDescription;
     $scope.pic = result.data.profile.pic;
-    // $scope.skills = result.data.profile.skills;
+    $scope.skills = result.data.profile.skills;
     $scope.facebookLink = result.data.profile.socialMedia.facebook;
     $scope.githubLink = result.data.profile.socialMedia.github;
     $scope.githubUsername = result.data.profile.socialMedia.githubUsername;
@@ -181,5 +187,4 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.githubTable.reload();
   }  
 }]);
-
 
