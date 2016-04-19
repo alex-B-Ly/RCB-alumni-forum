@@ -60,6 +60,10 @@ body{
   color: red;
 }
 
+.git {
+  color: red;
+}
+
 .header {
   text-decoration: underline;
   font-weight: bold;
