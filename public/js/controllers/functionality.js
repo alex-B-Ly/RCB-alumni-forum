@@ -1,3 +1,4 @@
+var socket = io('http://localhost:8080');
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
@@ -80,6 +81,11 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
   $scope.showProf = function(){
     $state.go('userprofile', {id: this.userId});
   }
+
+  $scope.sendMessage = function(){
+    socket.emit('my other event', {stuff: $scope.message});
+  }
+
 }]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
@@ -181,5 +187,4 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.githubTable.reload();
   }  
 }]);
-
 
