@@ -36,11 +36,11 @@
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#loginform">Log In</button>
           </div>
           <div class="navbar-right" ng-show="loggedIn">
-            <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
+            <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
               
             <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ui-sref="profileedit">Edit Profile</a></li>
-              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ng-click="logout()">Logout</a></li> 
+              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ui-sref="profileedit">Edit Profile <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ng-click="logout()">Logout <span class="glyphicon glyphicon-log-out pull-right"></span></a></li> 
             </ul>               
           </div>
         </div>
