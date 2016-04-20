@@ -1,5 +1,5 @@
 body{
-  background-color: white;
+  background-color: #fff;
   background-image: url("");
 }
 
@@ -12,16 +12,26 @@ body{
 }
 
 .forum1{
+  
   padding-top: 250px;
   background-image: url("/img/ru.png");
   background-repeat: no-repeat;
   background-attachment: relative;
-  background-size: 200px;
+  background-size: 300px;
   background-position: 50% 50%; 
+
+}
+#grad {
+  background: #dcdcdc; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(100,100,100,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(100,100,100,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(100,100,100,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(100,100,100,1)); /*Standard*/
 }
 
 .main-link-area{
   padding: 70px 0;
+  
 }
 
 .main-link,
