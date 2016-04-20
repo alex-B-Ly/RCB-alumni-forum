@@ -12,7 +12,12 @@ body{
 }
 
 .forum1{
-  padding-top: 175px;
+  padding-top: 250px;
+  background-image: url("/img/ru.png");
+  background-repeat: no-repeat;
+  background-attachment: relative;
+  background-size: 200px;
+  background-position: 50% 50%; 
 }
 
 .main-link-area{
@@ -56,13 +61,12 @@ body{
 
 .dropdown .dropdown-menu{
   display: block;
-    opacity: 0;
-
-    -moz-transition:    all 1000ms ease;
-    -webkit-transition: all 1000ms ease;
-    -o-transition:      all 1000ms ease;
-    -ms-transition:     all 1000ms ease;
-    transition:         all 1000ms ease;
+  opacity: 0;
+  -moz-transition:    all 1000ms ease;
+  -webkit-transition: all 1000ms ease;
+  -o-transition:      all 1000ms ease;
+  -ms-transition:     all 1000ms ease;
+  transition:         all 1000ms ease;
 
 }
 .dropdown:hover .dropdown-menu {
@@ -111,5 +115,7 @@ body{
   width: 100%;
   max-width: 300px;
 }
+
+
 
 
