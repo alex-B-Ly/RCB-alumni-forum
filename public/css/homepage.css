@@ -43,7 +43,7 @@ body{
   cursor: pointer;
 }
 
-.glyphicon-cog{
+.glyphicon-chevron-down{
   color: #fff;
   font-size: 1.5em;
   cursor: pointer;
@@ -52,6 +52,22 @@ body{
 
 .loggedinLink{
   cursor: pointer;
+}
+
+.dropdown .dropdown-menu{
+  display: block;
+    opacity: 0;
+
+    -moz-transition:    all 1000ms ease;
+    -webkit-transition: all 1000ms ease;
+    -o-transition:      all 1000ms ease;
+    -ms-transition:     all 1000ms ease;
+    transition:         all 1000ms ease;
+
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
 }
 
 /*studentProfilePage*/
@@ -88,4 +104,12 @@ body{
   padding: 3px;
   margin-right: 5px;
 }
+
+
+/* PROFILE MODAL */
+.profile-modal {
+  width: 100%;
+  max-width: 300px;
+}
+
 
