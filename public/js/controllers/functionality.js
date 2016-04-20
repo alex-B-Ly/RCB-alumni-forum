@@ -1,3 +1,4 @@
+var socket = io('http://localhost:8080');
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
@@ -39,6 +40,8 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
         $scope.loggedIn = true;
       }
     });
+    $scope.loginEmail = '';
+    $scope.loginPassword = '';
   }
 
   //LOGOUT
@@ -83,6 +86,8 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
 
   $scope.sendMessage = function(){
     socket.emit('message', {stuff: $scope.message});
+    // TODO Save $scope.message into DB
+
     $scope.message = "";
   }
 
@@ -172,15 +177,8 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
   });
 
   // TODO Add Github table functionality below
-  $scope.githubTable = new NgTableParams({
-      page: 1,
-      count: 10
-    }, {
-    total: $scope.data.length,
-    getData: function($defer, params) {
-        $scope.data = $scope.users.slice((params.page() - 1) * params.count(), params.page() * params.count());
-        $defer.resolve($scope.data);
-      }  
+  $scope.githubTable = new NgTableParams({}, {
+    getData: function($defer, params) {  
       return $http.get('https://api.github.com/users/' + $scope.githubUsername + '/repos')
       .then(function (response) {
         var filteredData = $filter('filter')(response.data, params.filter());
