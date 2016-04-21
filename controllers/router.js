@@ -135,5 +135,19 @@ router.get('/user/:id', function(req, res){
   });
 });
 
+// MESSAGE
+router.get('/message', function(req, res){
+  console.log('session: ', req.session);
+  User.findOne({_id: req.session.passport.user}, function(err, user){
+    if(err){throw err}
+
+    var userInfo = {
+      firstName: user.firstName,
+      lastName: user.lastName
+    }
+
+    res.send(userInfo);
+  })
+});
 
 module.exports = router;
