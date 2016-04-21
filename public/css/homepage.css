@@ -133,16 +133,27 @@ body{
 
 }
 
+/* PURPOSE SECTION */
 .purpose-img {
   
   background-repeat: no-repeat;
   background-attachment: relative;
   background-size: 400px;
   min-height: 275px;
-   
+  
 }
+
+.purpose h2 {
+  color: red;
+}
+   
+/* FEATURES SECTION */
 
 .features {
   padding-top: 30px;
+}
+
+.features h2 {
+  color: red;
 }
 

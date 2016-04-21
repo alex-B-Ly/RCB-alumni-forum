@@ -31,11 +31,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <!-- Sign Up Button-->
-          <div class="navbar-right" ng-hide="loggedIn">
+           
+           <div class="navbar-right" ng-hide="loggedIn">
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#signupform">Sign Up</button>
             <!-- Log In Button-->
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#loginform">Log In</button>
-          </div>
+          </div> 
           <div class="navbar-right" ng-show="loggedIn">
             <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
               
