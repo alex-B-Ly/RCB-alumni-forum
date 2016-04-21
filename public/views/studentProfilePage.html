@@ -34,10 +34,10 @@
             </div>
           <hr>
           <!--angular table -->
-          <h3 class="git">GitHub Table:</h3>
+          <h3 class="git">GitHub:</h3>
           <p>{{ git }}</p>
           <button ng-click="loadRepos()">Load</button>
-          <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered">
+          <table ng-table="githubTable" show-filter="true" class="table table-bordered table-striped table-hover table-condensed">
             <tr ng-repeat="repo in $data">
               <td data-title="'Name of Repository'" sortable="'full_name'" filter="{full_name: 'text'}"> {{ repo.full_name }} </td>
               <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}"> {{ repo.description }} </td>
