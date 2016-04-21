@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>THE RCB Alumni Forum</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
+     <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
    <link rel="stylesheet" type="text/css" href="../css/messenger.css">
   </head>
@@ -36,11 +36,11 @@
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#loginform">Log In</button>
           </div>
           <div class="navbar-right" ng-show="loggedIn">
-            <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
+            <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
               
             <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ui-sref="profileedit">Edit Profile</a></li>
-              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ng-click="logout()">Logout</a></li> 
+              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ui-sref="profileedit">Edit Profile <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+              <li role="presentation"><a class="loggedinLink" role="menuitem" tabindex="-1" ng-click="logout()">Logout <span class="glyphicon glyphicon-log-out pull-right"></span></a></li> 
             </ul>               
           </div>
         </div>
@@ -108,9 +108,9 @@
               </div>
 
               <div class="form-group">
-                <div class="col-md-2 col-md-offset-8">
+                <center>
                   <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="register()">
-                </div>
+                </center>
               </div>
 
             </form>
@@ -145,9 +145,9 @@
               </div>
 
               <div class="form-group">
-                <div class="col-md-2 col-md-offset-8">
+                <center>
                   <input type="submit" class="btn btn-sucess" value="submit" data-dismiss="modal" ng-click="login()">
-                </div>
+                </center>
               </div>
 
             </form>
@@ -159,7 +159,8 @@
 
   <ui-view></ui-view>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
