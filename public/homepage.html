@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/rutgers_block_r.jpg">
     <title>THE RCB Alumni Forum</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
      <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
@@ -30,11 +31,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <!-- Sign Up Button-->
-          <div class="navbar-right" ng-hide="loggedIn">
+           
+           <div class="navbar-right" ng-hide="loggedIn">
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#signupform">Sign Up</button>
             <!-- Log In Button-->
             <button type="button" class="btn btn-primary col-xs-12 col-md-6" data-toggle="modal" data-target="#loginform">Log In</button>
-          </div>
+          </div> 
           <div class="navbar-right" ng-show="loggedIn">
             <span class="nav-username dropdown-toggle" data-toggle="dropdown">{{user}}</span><span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></span>
               

@@ -108,6 +108,8 @@ $(document).on('click', '#profile_button', function(event) {
   $('.modal-backdrop').remove();
 });
 
+
+
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
   $scope.newSkills = [];
@@ -192,4 +194,6 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.githubTable.reload();
   }  
 }]);
+
+
 
