@@ -18,7 +18,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: relative;
   background-size: 300px;
-  background-position: 50% 50%; 
+  background-position: 50% 30%; 
 
 }
 #grad {
@@ -127,6 +127,18 @@ body{
   max-width: 300px;
 }
 
+.purpose {
+  padding-top: 60px; 
+  padding-bottom: 30px;
 
+}
 
+.purpose-img {
+  
+  background-repeat: no-repeat;
+  background-attachment: relative;
+  background-size: 500px;
+  min-height: 300px;
+   
+}
 
