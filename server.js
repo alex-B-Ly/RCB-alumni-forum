@@ -44,11 +44,11 @@ io.on('connection', function(socket){
 
 io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
-  socket.on('message', function (data) {
+  socket.on('message', function(data){
     console.log(data);
+    io.sockets.emit('spreadMessage', data);
   });
 });
-
 
 server.listen(PORT, function(){
   console.log('listening on ',PORT);
