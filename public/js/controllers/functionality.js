@@ -1,6 +1,31 @@
-var socket = io('http://localhost:8080');
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
+
+
+rcb.factory('socket', ['$rootScope', function($rootScope) {
+  var socket = io('http://localhost:8080');
+
+  return {
+    on: function(eventName, callback){
+      socket.on(eventName, function () {  
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function(eventName, data) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      });
+    }
+  };
+}]);
 
 rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
 
@@ -55,10 +80,18 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 
 }]);
 
-// SIDEBAR POPULATE STUDENTS
-rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
+// SIDEBAR AND MESSAGE CONTROLLER
+rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', function($scope, $http, $state, socket){
   $scope.students = [];
+  $scope.currentUser = '';
+  $scope.newMessages = [];
 
+  $http({
+    method: 'GET',
+    url: '/message'
+  }).then(function(user){
+    $scope.currentUser = user.data.firstName + ' ' + user.data.lastName;      
+  });
 
   $http({
     url:'/getstudents',
@@ -85,11 +118,17 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
   }
 
   $scope.sendMessage = function(){
-    socket.emit('message', {stuff: $scope.message});
+
+    socket.emit('message', {msg: $scope.message, user: $scope.currentUser});
     // TODO Save $scope.message into DB
 
     $scope.message = "";
   }
+
+  socket.on('spreadMessage', function(data){
+    $scope.newMessages.push(data);
+    console.log($scope.newMessages);
+  });
 
 }]);
 

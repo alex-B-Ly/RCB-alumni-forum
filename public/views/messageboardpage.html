@@ -21,7 +21,7 @@
             <div class="panel panel-info">
               <div class="panel-heading">Recent chat history</div>
               <div class="panel-body">
-                <ul class="student-list">
+                <!-- <ul class="student-list">
                   <li class="student">
                     <div class="student-body">
                       <div class="student">
@@ -42,6 +42,9 @@
                       </div>
                     </div>                                    
                   </li>
+                </ul> -->
+                <ul>
+                  <li ng-repeat="message in newMessages">{{ message.user }} says: {{ message.msg }}</li>
                 </ul>
               </div>
               <div class="panel-footer">
