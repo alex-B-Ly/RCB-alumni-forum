@@ -36,9 +36,47 @@ body{
   text-shadow: 0 0 35px #D6D6D6;
 }
 
+.nav-username{
+  font-size: 1.3em;
+  color: #fff;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.glyphicon-chevron-down{
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+.loggedinLink{
+  cursor: pointer;
+}
+
+.dropdown .dropdown-menu{
+  display: block;
+    opacity: 0;
+
+    -moz-transition:    all 1000ms ease;
+    -webkit-transition: all 1000ms ease;
+    -o-transition:      all 1000ms ease;
+    -ms-transition:     all 1000ms ease;
+    transition:         all 1000ms ease;
+
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
 /*studentProfilePage*/
 
 .bio {
+  color: red;
+}
+
+.git {
   color: red;
 }
 
@@ -51,6 +89,27 @@ body{
 .skills {
   font-weight: bold;
   color:red;
+}
+
+/* Profile Edit Page */
+
+.skill-edit{
+  display: inline-block;
+}
+
+.skills_to_be{
+  background: red;
+  font-size: 1em;
+  color: #fff;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+
+/* PROFILE MODAL */
+.profile-modal {
+  width: 100%;
+  max-width: 300px;
 }
 
 

@@ -6,20 +6,68 @@
           <form class="form-profile-edit" autocomplete="off">  
             <h2 class="form-signin-heading">Edit Profile</h2>
             <br>
-              <input type="text" class="form-control" ng-model="editPic" placeholder="Picture URL" autofocus />
-              <input type="text" class="form-control" ng-model="editJobTitle" placeholder="Job Title" />
-              <input type="text" class="form-control" ng-model="editJobDesc" placeholder="Job Description" />
-              <input type="text" class="form-control" ng-model="editBio" placeholder="Biography" />
-              <!-- <input type="text" class="form-control" ng-model="#" placeholder="Skills" /> -->
-              <input type="text" class="form-control" ng-model="editCurrentlyLearning" placeholder="Currently Learning" />
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="editPic" placeholder="Picture URL" autofocus />
+              </div>
+
+              <div class="form-group">
+                <p>Current Job Title: {{ jobTitleInfo }} <button type="button" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-remove"></span></button></p> 
+                <input type="text" class="form-control" ng-model="editJobTitle" placeholder="Job Title" />
+              </div>
+
+              <div class="form-group">
+              <p>Current Job Description: {{ jobDescriptionInfo }}<button type="button" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-remove"></span></button></p> 
+                <input type="text" class="form-control" ng-model="editJobDesc" placeholder="Job Description" />
+              </div>
+
+              <div class="form-group">
+                <p>Current Bio: {{ bioInfo }}<button type="button" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-remove"></span></button></p>
+                <input type="text" class="form-control" ng-model="editBio" placeholder="Biography" />
+              </div>
+
+              <div class="form-group text-center">
+                <p ng-show="newSkills.length > 0">Skills to be added</p>
+                <span class="skills_to_be" ng-repeat="skill in newSkills">{{skill}}</span>
+                <p>Add Skills</p>
+                <input class="skill-edit" type="text" class="form-control" ng-model="editAddSkill" placeholder="Add Skill" />
+                <a class="skill-edit" href="#" ng-click="skillAdd()">Add Skill</a>
+              </div>
+
+              <div class="form-group">
+                <p>Currently Learning: {{ currentlyLearningInfo }}<button type="button" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-remove"></span></button></p>
+                <input type="text" class="form-control" ng-model="editCurrentlyLearning" placeholder="Currently Learning" />
+              </div>
+
+              <div class="form-group">
               <!-- <input type="text" class="form-control" ng-model="#" placeholder="Recently Learned" />     -->
+              </div>
               <br>  
               <h4>Social Media</h4>
-              <input type="text" class="form-control" ng-model="editLinkedIn" placeholder="LinkedIn" /> 
-              <input type="text" class="form-control" ng-model="editGithub" placeholder="Github" /> 
-              <input type="text" class="form-control" ng-model="editGithubUsername" placeholder="Github username" /> 
-              <input type="text" class="form-control" ng-model="editTwitter" placeholder="Twitter" /> 
-              <input type="text" class="form-control" ng-model="editFacebook" placeholder="Facebook" /> 
+              
+              <div class="form-group">
+                <label for="linkedin_link">LinkedIn</label>
+                <input type="text" id="linkedin_link" class="form-control" ng-model="editLinkedIn" placeholder="LinkedIn" /> 
+              </div>
+
+              <div class="form-group">
+                <label for="github_link">Github</label>
+                <input type="text" id="github_link" class="form-control" ng-model="editGithub" placeholder="Github" />
+              </div>
+
+              <div class="form-group">
+                <label for="github_username">Github Username</label>
+                <input type="text" id="github_username" class="form-control" ng-model="editGithubUsername" placeholder="Github username" /> 
+              </div>
+
+              <div class="form-group">
+                <label for="twitter_link">Twitter</label>
+                <input type="text" id="twitter_link" class="form-control" ng-model="editTwitter" placeholder="Twitter" /> 
+              </div>
+
+              <div class="form-group">
+                <label for="facebook_link">Facebook</label>
+                <input type="text" id="facebook_link" class="form-control" ng-model="editFacebook" placeholder="Facebook" /> 
+              </div>
               <br>
               <button class="btn btn-lg  btn-block" ng-click="updateProf()" ui-sref="messageboard">Make Changes</button>  
               <a ui-sref="welcome">cancel</a> 

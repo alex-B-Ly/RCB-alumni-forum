@@ -1,7 +1,8 @@
+var socket = io('http://localhost:8080');
 // HOMEPAGE ANGULAR
 var rcb = angular.module('RCBmessenger');
 
-rcb.controller('navController', function($scope, $http){
+rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
 
   // REGISTER
   $scope.register = function(){
@@ -16,7 +17,6 @@ rcb.controller('navController', function($scope, $http){
         section: $scope.registerSection
       }
     }).then(function(result){
-      console.log(result);
       $scope.newRegister = true;
       $scope.loginFail = false;
     });
@@ -32,23 +32,33 @@ rcb.controller('navController', function($scope, $http){
         password: $scope.loginPassword
       }
     }).then(function(result){
-      console.log('front end result:', result);
       if(!result.data.firstName){
         $scope.loginFail = true;
         $scope.newRegister = false;
       }else{
-        console.log(result.data);
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
         $scope.loggedIn = true;
       }
     });
+    $scope.loginEmail = '';
+    $scope.loginPassword = '';
   }
 
-});
+  //LOGOUT
+  $scope.logout = function(){
+    $scope.loggedIn = false;
+    $http({
+      url: '/logout',
+      method: 'POST'
+    });
+  }
+
+}]);
 
 // SIDEBAR POPULATE STUDENTS
 rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scope, $http, $state){
   $scope.students = [];
+
 
   $http({
     url:'/getstudents',
@@ -68,12 +78,19 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', function($scop
     $scope.profLastName = this.student.lastName;
     $scope.userSkills = this.student.profile.skills;
     $scope.profJobTitle = this.student.profile.jobTitle;
-    console.log(this.student.id);
   }
 
   $scope.showProf = function(){
     $state.go('userprofile', {id: this.userId});
   }
+
+  $scope.sendMessage = function(){
+    socket.emit('message', {stuff: $scope.message});
+    // TODO Save $scope.message into DB
+
+    $scope.message = "";
+  }
+
 }]);
 
 // MESSAGE BOARD PAGE MENU TOGGLE
@@ -83,7 +100,7 @@ $(document).on('click', '#menu-toggle', function(e) {
 });
 
 
-
+// DISGUSTING MODAL FIX
 $(document).on('click', '#profile_button', function(event) {
   event.preventDefault();
   $('#profileView').modal('hide');
@@ -92,8 +109,19 @@ $(document).on('click', '#profile_button', function(event) {
 });
 
 // PROFILE EDIT CONTROLLER
-rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
-  
+rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
+  $scope.newSkills = [];
+
+  $http({
+    method: 'GET',
+    url: '/profedit',
+  }).then(function(user){
+    var userStuff = user.data;
+    $scope.jobTitleInfo = userStuff.profile.jobTitle;
+    $scope.jobDescriptionInfo = userStuff.profile.jobDescription;
+    $scope.bioInfo = userStuff.profile.bio;
+  });
+
   $scope.updateProf = function(){
     $http({
       method: 'POST',
@@ -108,10 +136,22 @@ rcb.controller('editController', ['$scope', '$http' ,function($scope, $http){
         'profile.socialMedia.github': $scope.editGithub,
         'profile.socialMedia.githubUsername': $scope.editGithubUsername,
         'profile.socialMedia.twitter': $scope.editTwitter,
-        'profile.socialMedia.facebook': $scope.editFacebook
+        'profile.socialMedia.facebook': $scope.editFacebook,
+        'newSkills': $scope.newSkills
       }
     });
+    // console.log('newSkills arr: ',$scope.newSkills)
   }
+
+  $scope.skillAdd = function(){
+    if($scope.editAddSkill.length === 0){
+      return;
+    }
+
+    $scope.newSkills.push($scope.editAddSkill);
+    $scope.editAddSkill = "";
+  }
+
 }]);
 
 // SHOW PROFILE
@@ -128,6 +168,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.bio = result.data.profile.bio;
     $scope.jobDesc = result.data.profile.jobDescription;
     $scope.pic = result.data.profile.pic;
+    $scope.skills = result.data.profile.skills;
     $scope.facebookLink = result.data.profile.socialMedia.facebook;
     $scope.githubLink = result.data.profile.socialMedia.github;
     $scope.githubUsername = result.data.profile.socialMedia.githubUsername;
@@ -137,7 +178,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
 
   // TODO Add Github table functionality below
   $scope.githubTable = new NgTableParams({}, {
-    getData: function($defer, params) {
+    getData: function($defer, params) {  
       return $http.get('https://api.github.com/users/' + $scope.githubUsername + '/repos')
       .then(function (response) {
         var filteredData = $filter('filter')(response.data, params.filter());
@@ -151,5 +192,4 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
     $scope.githubTable.reload();
   }  
 }]);
-
 

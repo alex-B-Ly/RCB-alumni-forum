@@ -9,7 +9,7 @@
         </li>
         <li ng-repeat="student in students" data-toggle="modal" data-target="#profileView" ng-click="profileModal()">
           <span>{{ student.firstName }} {{ student.lastName }}</span>
-          <span>{{ student.section }}</span>
+          <span class="student-section">{{ student.section }}</span>
         </li>
       </ul>
     </div>
@@ -46,9 +46,9 @@
               </div>
               <div class="panel-footer">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Enter Message">
+                  <input type="text" class="form-control" placeholder="Enter Message" ng-model="message">
                   <span class="input-group-btn">
-                    <button class="btn btn-info" type="button">SEND</button>
+                    <button class="btn btn-info" type="button" ng-click="sendMessage()">SEND</button>
                   </span>
                 </div>
               </div>
@@ -70,11 +70,11 @@
         </div>
         <div class="modal-body"> 
           <center>
-            <img class="img-responsive" src="{{ profPic }}" alt="Picture of {{ profFirstName }} {{ profLastName }}">
+            <img class="img-responsive profile-modal" src="{{ profPic }}" alt="Picture of {{ profFirstName }} {{ profLastName }}">
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <p>{{ profJobTitle }}</p>
             <span>Skills: </span>
-            <span class="label label-info" ng-repeat="skill in userSkills">{{ skill }}</span>
+            <span class="label label-info" ng-repeat="skill in userSkills track by $index">{{ skill }}</span>
             <br>          
           </center>
           <hr>

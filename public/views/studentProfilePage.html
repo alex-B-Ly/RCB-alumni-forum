@@ -29,20 +29,21 @@
             <div>
               <ul class="skills">
                 Skills
-                <li ng-repeat>
-                </li>
+                <li ng-repeat="skill in skills track by $index">{{ skill }}</li>
               </ul>
             </div>
           <hr>
-          <!-- TODO Insert angular table -->
+          <!--angular table -->
+          <h3 class="git">GitHub Table:</h3>
+          <p>{{ git }}</p>
           <button ng-click="loadRepos()">Load</button>
-          <table ng-table="githubTable" show-filter="true">
+          <table ng-table="githubTable" show-filter="true" class="table table-bordered">
             <tr ng-repeat="repo in $data">
-              <td data-title="'Owner'"> {{ repo.owner.login }} </td>
               <td data-title="'Name of Repository'" sortable="'full_name'" filter="{full_name: 'text'}"> {{ repo.full_name }} </td>
               <td data-title="'Description'" sortable="'description'" filter="{description: 'text'}"> {{ repo.description }} </td>
             </tr>
           </table>
+          
           <hr>
           <a href="{{ facebookLink }}" class="btn btn-primary" target="_blank">facebook</a>
           <a href="{{ githubLink }}" class="btn btn-primary" target="_blank">github</a>

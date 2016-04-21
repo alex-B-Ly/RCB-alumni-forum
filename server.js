@@ -7,6 +7,8 @@ var db = require('./config/connection.js');
 var PORT = process.env.PORT || 8080;
 
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // MIDDLEWARE
 app.use(express.static('public'));
@@ -34,6 +36,20 @@ app.use(bodyParser.urlencoded({
 var routes = require('./controllers/router.js');
 app.use('/', routes);
 
-app.listen(PORT, function(){
+
+// SOCKET
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('message', function (data) {
+    console.log(data);
+  });
+});
+
+
+server.listen(PORT, function(){
   console.log('listening on ',PORT);
 });

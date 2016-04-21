@@ -158,4 +158,9 @@
    #menu-toggle{
     display: none !important;
    }
+
+   .student-section {
+    float: right;
+    padding-right: 10px;
+   }
 }
