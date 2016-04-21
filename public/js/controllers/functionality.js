@@ -72,6 +72,7 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', function($scope, $http, $state, socket){
   $scope.students = [];
   $scope.currentUser = '';
+  $scope.newMessages = [];
 
   $http({
     method: 'GET',
@@ -106,14 +107,15 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', func
 
   $scope.sendMessage = function(){
 
-    socket.emit('message', {stuff: $scope.message, user: $scope.currentUser});
+    socket.emit('message', {msg: $scope.message, user: $scope.currentUser});
     // TODO Save $scope.message into DB
 
     $scope.message = "";
   }
 
   socket.on('spreadMessage', function(data){
-    console.log(data);
+    $scope.newMessages.push(data);
+    console.log($scope.newMessages);
   });
 
 }]);
