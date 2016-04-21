@@ -137,8 +137,12 @@ body{
   
   background-repeat: no-repeat;
   background-attachment: relative;
-  background-size: 500px;
-  min-height: 300px;
+  background-size: 400px;
+  min-height: 275px;
    
+}
+
+.features {
+  padding-top: 30px;
 }
 
