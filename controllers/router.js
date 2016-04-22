@@ -121,6 +121,7 @@ router.post('/updateprof', function(req, res){
 
 // SHOW PROFILE
 router.get('/user/:id', function(req, res){
+  console.log(req.params);
   User.findOne({_id:req.params.id}, function(err, user){
     if(err){throw err}
 

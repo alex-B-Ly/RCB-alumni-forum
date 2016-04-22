@@ -177,8 +177,8 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
   });
 
   // TODO Add Github table functionality below
-  $scope.githubTable = new NgTableParams({}, {
-    getData: function($defer, params) {  
+  $scope.githubTable = new NgTableParams{{}, {
+    getData: function($defer, params) { 
       return $http.get('https://api.github.com/users/' + $scope.githubUsername + '/repos')
       .then(function (response) {
         var filteredData = $filter('filter')(response.data, params.filter());
@@ -186,10 +186,9 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
         return sortedData;
       });  
     }
-  });
+  });     
   
   $scope.loadRepos = function() {
     $scope.githubTable.reload();
   }  
 }]);
-
