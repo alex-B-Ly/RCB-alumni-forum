@@ -1,5 +1,5 @@
 body{
-  background-color: white;
+  background-color: #fff;
   background-image: url("");
 }
 
@@ -12,11 +12,27 @@ body{
 }
 
 .forum1{
-  padding-top: 175px;
+  
+  padding-top: 250px;
+  background-image: url("/img/ru.png");
+  background-repeat: no-repeat;
+  background-attachment: relative;
+  background-size: 300px;
+  background-position: 50% 30%; 
+
 }
+#grad {
+  background: #dcdcdc; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(255,0,0,0),rgba(100,100,100,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(rgba(255,0,0,0),rgba(100,100,100,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(rgba(255,0,0,0),rgba(100,100,100,1)); /*Fx 3.6-15*/
+  background: linear-gradient( rgba(255,0,0,0), rgba(100,100,100,1)); /*Standard*/
+}
+
 
 .main-link-area{
   padding: 70px 0;
+  
 }
 
 .main-link,
@@ -56,13 +72,12 @@ body{
 
 .dropdown .dropdown-menu{
   display: block;
-    opacity: 0;
-
-    -moz-transition:    all 1000ms ease;
-    -webkit-transition: all 1000ms ease;
-    -o-transition:      all 1000ms ease;
-    -ms-transition:     all 1000ms ease;
-    transition:         all 1000ms ease;
+  opacity: 0;
+  -moz-transition:    all 1000ms ease;
+  -webkit-transition: all 1000ms ease;
+  -o-transition:      all 1000ms ease;
+  -ms-transition:     all 1000ms ease;
+  transition:         all 1000ms ease;
 
 }
 .dropdown:hover .dropdown-menu {
@@ -112,6 +127,35 @@ body{
   max-width: 300px;
 }
 
+.purpose {
+  padding-top: 60px; 
+  padding-bottom: 30px;
+
+}
+
+/* PURPOSE SECTION */
+.purpose-img {
+  
+  background-repeat: no-repeat;
+  background-attachment: relative;
+  background-size: 400px;
+  min-height: 275px;
+  
+}
+
+.purpose h2 {
+  color: red;
+}
+   
+/* FEATURES SECTION */
+
+.features {
+  padding-top: 30px;
+}
+
+.features h2 {
+  color: red;
+}
 
 
 
