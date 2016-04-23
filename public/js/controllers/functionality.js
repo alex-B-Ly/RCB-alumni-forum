@@ -147,7 +147,22 @@ $(document).on('click', '#profile_button', function(event) {
   $('.modal-backdrop').remove();
 });
 
+// GITHUB TABLE SLIDE
+$(document).on('click', '.github-show', function(e){
+  e.preventDefault();
+    $('.github-show').hide();
+    $('.github-hide').show();
+    $('.github-table').removeClass('github-table-inactive').addClass('github-table-active');
+    $('.github-table').slideDown(1500);
+});
 
+$(document).on('click', '.github-hide', function(e){
+  e.preventDefault();
+  $('.github-hide').hide();
+  $('.github-show').show();
+  $('.github-table').removeClass('github-table-active').addClass('github-table-inactive');
+  $('.github-table').slideUp(1500);
+});
 
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
@@ -228,7 +243,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
       });  
     }
   });
-  
+
   $scope.loadRepos = function() {
     $scope.githubTable.reload();
   }  
