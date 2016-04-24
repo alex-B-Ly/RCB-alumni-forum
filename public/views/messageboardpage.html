@@ -48,6 +48,9 @@
                 </ul>
               </div>
               <div class="panel-footer">
+                <div ng-hide="loggedIn">
+                  <p>Log in to post a comment</p>
+                </div>
                 <div class="input-group" ng-show="loggedIn">
                   <input type="text" class="form-control" placeholder="Enter Message" ng-model="message">
                   <span class="input-group-btn">
