@@ -27,7 +27,7 @@ rcb.factory('socket', ['$rootScope', function($rootScope) {
   };
 }]);
 
-rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
+rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', function($rootScope, $scope, $http, $state){
 
   // REGISTER
   $scope.register = function(){
@@ -62,7 +62,7 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
         $scope.newRegister = false;
       }else{
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
-        $scope.loggedIn = true;
+        $rootScope.loggedIn = true;
       }
     });
     $scope.loginEmail = '';
@@ -71,7 +71,7 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 
   //LOGOUT
   $scope.logout = function(){
-    $scope.loggedIn = false;
+    $rootScope.loggedIn = false;
     $http({
       url: '/logout',
       method: 'POST'
@@ -81,7 +81,7 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 }]);
 
 // SIDEBAR AND MESSAGE CONTROLLER
-rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', function($scope, $http, $state, socket){
+rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 'socket', function($rootScope, $scope, $http, $state, socket){
   $scope.students = [];
   $scope.currentUser = '';
   $scope.newMessages = [];
@@ -118,7 +118,7 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', func
   }
 
   $scope.sendMessage = function(){
-
+    console.log('root scope loggedIn? ', $rootScope.loggedIn);
     socket.emit('message', {msg: $scope.message, user: $scope.currentUser});
     // TODO Save $scope.message into DB
 
