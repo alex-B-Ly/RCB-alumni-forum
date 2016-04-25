@@ -98,6 +98,14 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     }
   });
 
+  $http({
+    url:'/getmessages',
+    method:'GET'
+  }).then(function(result){
+    // TODO Manipulate data and prepend to message list
+    console.log(result);
+  })
+
   $scope.profileModal = function(){
     $scope.userId = this.student.id;
     $scope.profPic = this.student.profile.pic;
@@ -114,7 +122,7 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
 
   $scope.sendMessage = function(){
     socket.emit('message', {msg: $scope.message, user: $rootScope.currentUser});
-    // TODO Save $scope.message into DB
+
     $http({
       url:'/messagestore',
       method: 'POST',
