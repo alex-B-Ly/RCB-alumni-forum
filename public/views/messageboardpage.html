@@ -48,7 +48,10 @@
                 </ul>
               </div>
               <div class="panel-footer">
-                <div class="input-group">
+                <div ng-hide="loggedIn">
+                  <p>Log in to post a comment</p>
+                </div>
+                <div class="input-group" ng-show="loggedIn">
                   <input type="text" class="form-control" placeholder="Enter Message" ng-model="message">
                   <span class="input-group-btn">
                     <button class="btn btn-info" type="button" ng-click="sendMessage()">SEND</button>
@@ -77,7 +80,7 @@
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <p>{{ profJobTitle }}</p>
             <span>Skills: </span>
-            <span class="label label-info" ng-repeat="skill in userSkills track by $index">{{ skill }}</span>
+            <span class=" label label-info" ng-repeat="(index, skill) in userSkills track by $index">{{ skill }}<br ng:show="(index + 1)%5==0"/></span>
             <br>          
           </center>
           <hr>

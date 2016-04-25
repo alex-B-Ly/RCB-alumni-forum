@@ -133,6 +133,32 @@ body{
 
 }
 
+.github-table-inactive,
+.github-hide{
+  display: none;
+}
+
+.github-table-active{
+  display: block;
+}
+
+/* GITHUB BUTTONS */
+.github-hide,
+.github-show{
+  color: red;
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 1.1em;
+  border: 5px solid red;
+  transition: all 2s;
+}
+
+.github-hide:hover,
+.github-show:hover{
+  text-shadow: 0 0 3px #C27B5A;
+}
+
 /* PURPOSE SECTION */
 .purpose-img {
   
@@ -156,4 +182,6 @@ body{
 .features h2 {
   color: red;
 }
+
+
 

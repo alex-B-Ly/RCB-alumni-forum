@@ -16,7 +16,7 @@ app.use(express.static('public'));
 app.use(logger('dev'));
 
 app.use(session({
-  secret: 'youlovehorses',
+  secret: 'supersecrethorses',
   resave: false,
   saveUninitialized: true,
   cookie:{

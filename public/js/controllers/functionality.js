@@ -27,7 +27,7 @@ rcb.factory('socket', ['$rootScope', function($rootScope) {
   };
 }]);
 
-rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $http, $state){
+rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', function($rootScope, $scope, $http, $state){
 
   // REGISTER
   $scope.register = function(){
@@ -62,7 +62,8 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
         $scope.newRegister = false;
       }else{
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
-        $scope.loggedIn = true;
+        $rootScope.loggedIn = true;
+        $rootScope.currentUser = result.data.firstName + ' ' + result.data.lastName;
       }
     });
     $scope.loginEmail = '';
@@ -71,7 +72,8 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 
   //LOGOUT
   $scope.logout = function(){
-    $scope.loggedIn = false;
+    $rootScope.loggedIn = false;
+    $rootScope.currentUser = undefined;
     $http({
       url: '/logout',
       method: 'POST'
@@ -81,23 +83,15 @@ rcb.controller('navController', ['$scope', '$http', '$state', function($scope, $
 }]);
 
 // SIDEBAR AND MESSAGE CONTROLLER
-rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', function($scope, $http, $state, socket){
+rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 'socket', function($rootScope, $scope, $http, $state, socket){
   $scope.students = [];
-  $scope.currentUser = '';
   $scope.newMessages = [];
-
-  $http({
-    method: 'GET',
-    url: '/message'
-  }).then(function(user){
-    $scope.currentUser = user.data.firstName + ' ' + user.data.lastName;      
-  });
 
   $http({
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
-    console.log(result);
+    console.log($rootScope.currentUser);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
@@ -118,8 +112,7 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', func
   }
 
   $scope.sendMessage = function(){
-
-    socket.emit('message', {msg: $scope.message, user: $scope.currentUser});
+    socket.emit('message', {msg: $scope.message, user: $rootScope.currentUser});
     // TODO Save $scope.message into DB
 
     $scope.message = "";
@@ -127,7 +120,6 @@ rcb.controller('sidebarController', ['$scope', '$http', '$state', 'socket', func
 
   socket.on('spreadMessage', function(data){
     $scope.newMessages.push(data);
-    console.log($scope.newMessages);
   });
 
 }]);
@@ -147,7 +139,22 @@ $(document).on('click', '#profile_button', function(event) {
   $('.modal-backdrop').remove();
 });
 
+// GITHUB TABLE SLIDE
+$(document).on('click', '.github-show', function(e){
+  e.preventDefault();
+    $('.github-show').hide();
+    $('.github-hide').show();
+    $('.github-table').removeClass('github-table-inactive').addClass('github-table-active');
+    $('.github-table').slideDown(1500);
+});
 
+$(document).on('click', '.github-hide', function(e){
+  e.preventDefault();
+  $('.github-hide').hide();
+  $('.github-show').show();
+  $('.github-table').removeClass('github-table-active').addClass('github-table-inactive');
+  $('.github-table').slideUp(1500);
+});
 
 // PROFILE EDIT CONTROLLER
 rcb.controller('editController', ['$scope', '$http', '$state' ,function($scope, $http, $state){
@@ -228,7 +235,7 @@ rcb.controller('profileController', ['$scope', '$http', '$state', '$filter', 'Ng
       });  
     }
   });
-  
+
   $scope.loadRepos = function() {
     $scope.githubTable.reload();
   }  
