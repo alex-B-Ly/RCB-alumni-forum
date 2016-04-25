@@ -63,6 +63,7 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
       }else{
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
         $rootScope.loggedIn = true;
+        $rootScope.currentUser = result.data.firstName + ' ' + result.data.lastName;
       }
     });
     $scope.loginEmail = '';
@@ -72,6 +73,7 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
   //LOGOUT
   $scope.logout = function(){
     $rootScope.loggedIn = false;
+    $rootScope.currentUser = undefined;
     $http({
       url: '/logout',
       method: 'POST'
@@ -83,21 +85,13 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
 // SIDEBAR AND MESSAGE CONTROLLER
 rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 'socket', function($rootScope, $scope, $http, $state, socket){
   $scope.students = [];
-  $scope.currentUser = '';
   $scope.newMessages = [];
-
-  $http({
-    method: 'GET',
-    url: '/message'
-  }).then(function(user){
-    $scope.currentUser = user.data.firstName + ' ' + user.data.lastName;      
-  });
 
   $http({
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
-    console.log(result);
+    console.log($rootScope.currentUser);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
@@ -118,8 +112,7 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
   }
 
   $scope.sendMessage = function(){
-    console.log('root scope loggedIn? ', $rootScope.loggedIn);
-    socket.emit('message', {msg: $scope.message, user: $scope.currentUser});
+    socket.emit('message', {msg: $scope.message, user: $rootScope.currentUser});
     // TODO Save $scope.message into DB
 
     $scope.message = "";
@@ -127,7 +120,6 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
 
   socket.on('spreadMessage', function(data){
     $scope.newMessages.push(data);
-    console.log($scope.newMessages);
   });
 
 }]);
