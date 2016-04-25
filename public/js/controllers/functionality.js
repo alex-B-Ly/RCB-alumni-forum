@@ -64,7 +64,6 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
         $rootScope.loggedIn = true;
         $rootScope.currentUser = result.data.firstName + ' ' + result.data.lastName;
-        $rootScope.currentUserId = result.data.id;
       }
     });
     $scope.loginEmail = '';
@@ -75,7 +74,6 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
   $scope.logout = function(){
     $rootScope.loggedIn = false;
     $rootScope.currentUser = undefined;
-    $rootScope.currentUserId = undefined;
     $http({
       url: '/logout',
       method: 'POST'
@@ -121,8 +119,7 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
       url:'/messagestore',
       method: 'POST',
       data:{
-        msg: $scope.message,
-        user: $scope.currentUser
+        msg: $scope.message
       }
     });
 

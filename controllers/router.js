@@ -5,6 +5,7 @@ var router = express.Router();
 
 // MODELS
 var User = require('../models/user.js');
+var Message = require('../models/message.js');
 
 // HOMEPAGE
 router.get('/', function(req, res){
@@ -153,7 +154,20 @@ router.get('/user/:id', function(req, res){
 
 // MESSAGE STORE
 router.post('/messagestore', function(req, res){
-  console.log('message store: ',req.body);
+  var Msg = {
+    message: req.body.msg,
+    user: req.session.passport.user
+  };
+
+  var newMsg = new Message(Msg);
+
+  newMsg.save(function(err, doc){
+    if(err){
+      throw err
+    }else{
+      console.log(doc);
+    }
+  });
 });
 
 module.exports = router;
