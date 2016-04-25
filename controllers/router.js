@@ -36,7 +36,8 @@ router.post('/login', function(req, res, next){
       req.login(user, function(err){
         var userInfo = {
           firstName: user.firstName,
-          lastName: user.lastName
+          lastName: user.lastName,
+          id: user._id
         }
         res.send(userInfo);  
       });
@@ -136,18 +137,23 @@ router.get('/user/:id', function(req, res){
 });
 
 // MESSAGE
-router.get('/message', function(req, res){
-  console.log('session: ', req.session);
-  User.findOne({_id: req.session.passport.user}, function(err, user){
-    if(err){throw err}
+// router.get('/message', function(req, res){
+//   console.log('session: ', req.session);
+//   User.findOne({_id: req.session.passport.user}, function(err, user){
+//     if(err){throw err}
 
-    var userInfo = {
-      firstName: user.firstName,
-      lastName: user.lastName
-    }
+//     var userInfo = {
+//       firstName: user.firstName,
+//       lastName: user.lastName
+//     }
 
-    res.send(userInfo);
-  })
+//     res.send(userInfo);
+//   })
+// });
+
+// MESSAGE STORE
+router.post('/messagestore', function(req, res){
+  console.log('message store: ',req.body);
 });
 
 module.exports = router;

@@ -64,6 +64,7 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
         $scope.user = result.data.firstName + ' ' + result.data.lastName;
         $rootScope.loggedIn = true;
         $rootScope.currentUser = result.data.firstName + ' ' + result.data.lastName;
+        $rootScope.currentUserId = result.data.id;
       }
     });
     $scope.loginEmail = '';
@@ -74,6 +75,7 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
   $scope.logout = function(){
     $rootScope.loggedIn = false;
     $rootScope.currentUser = undefined;
+    $rootScope.currentUserId = undefined;
     $http({
       url: '/logout',
       method: 'POST'
@@ -92,6 +94,7 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     method:'GET'
   }).then(function(result){
     console.log($rootScope.currentUser);
+    console.log($rootScope.currentUserId);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
@@ -114,6 +117,14 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
   $scope.sendMessage = function(){
     socket.emit('message', {msg: $scope.message, user: $rootScope.currentUser});
     // TODO Save $scope.message into DB
+    $http({
+      url:'/messagestore',
+      method: 'POST',
+      data:{
+        msg: $scope.message,
+        user: $scope.currentUser
+      }
+    });
 
     $scope.message = "";
   }
