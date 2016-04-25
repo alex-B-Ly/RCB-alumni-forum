@@ -103,7 +103,13 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     method:'GET'
   }).then(function(result){
     // TODO Manipulate data and prepend to message list
-    console.log(result);
+    for(var i=0; i<result.data.length; i++){
+      var message={
+        user: result.data[i].username,
+        msg: result.data[i].message
+      }
+      $scope.newMessages.push(message);
+    }
   })
 
   $scope.profileModal = function(){
