@@ -19,12 +19,12 @@ function userCreator(fname, lname, pass, email, sect, profBio, jobTitle, jobDesc
   user.save();
 }
 
-userCreator('Axel', 'Lee', 'test', 'a@g.com', 1027, 'Just another space monkey trying to make his way in the world.', 'Full Stack Developer', 'I develop cool stuff.', ['Mongo', 'Express', 'Angular', 'Node']);
+userCreator('Axel', 'Lee', 'pass', 'a@g.com', 1027, 'Just another space monkey trying to make his way in the world.', 'Full Stack Developer', 'I develop cool stuff.', ['Mongo', 'Express', 'Angular', 'Node']);
 
-userCreator('Jana', 'Bostrom', 'password', 'jb@yahoo.com', 1027, 'A Swedish girl who has an abnormal and borderline obsessive love for waffles.', 'Web Designer', 'I make nice looking things.', ['Photoshop', 'Sass', 'CSS', 'HTML', 'Lightroom', 'Illustrator', 'After Effects']);
+userCreator('Jana', 'Bostrom', 'pass', 'jb@g.com', 1027, 'A Swedish girl who has an abnormal and borderline obsessive love for waffles.', 'Web Designer', 'I make nice looking things.', ['Photoshop', 'Sass', 'CSS', 'HTML', 'Lightroom', 'Illustrator', 'After Effects']);
 
-userCreator('John', 'Doe', 'unknown', 'jdoe@aol.com', 1026, 'Who am I?', 'Back End Dev', 'Developer who specializes in PHP', ['HTML', 'CSS', 'PHP', 'Laravel', 'Database Theory']);
+userCreator('John', 'Doe', 'pass', 'jd@g.com', 1026, 'Who am I?', 'Back End Dev', 'Developer who specializes in PHP', ['HTML', 'CSS', 'PHP', 'Laravel', 'Database Theory']);
 
-userCreator('Mara', 'Tanner', 'horserider', 'mara@gmail.com', 1027, 'I have always loved horses.  Horses are my life.', 'Horse Trainer', 'I like horses and aspire to be a horse breeder and trainer.', ['Horses', 'More horses']);
+userCreator('Mara', 'Tanner', 'pass', 'mara@g.com', 1027, 'I have always loved horses.  Horses are my life.', 'Horse Trainer', 'I like horses and aspire to be a horse breeder and trainer.', ['Horses', 'More horses']);
 
 userCreator('Admiral', 'Ackbar', 'itsatrap', 'itsatrap@rebels.net', 1026, 'I am an admiral who has helped the rebels defeat the Empire and am now helping the resistance fight off the First Order.', 'Rebel Admiral', '... IT\'s A TRAP!!!', ['Trap Detection', 'Rebellions', 'Troop Organization', 'Starship Command']);

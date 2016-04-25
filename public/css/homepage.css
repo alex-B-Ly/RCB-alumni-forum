@@ -183,5 +183,19 @@ body{
   color: red;
 }
 
+/* MESSAGES */
+.messageList{
+  list-style-type: none;
+  margin: 0;
+  padding: 0 10px;
+}
 
+.messageUser{
+  font-weight: bold;
+  margin: 0;
+}
+
+.message{
+  font-size: 1.1em;
+}
 

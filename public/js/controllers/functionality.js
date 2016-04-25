@@ -119,7 +119,8 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
       url:'/messagestore',
       method: 'POST',
       data:{
-        msg: $scope.message
+        msg: $scope.message,
+        username: $rootScope.currentUser
       }
     });
 

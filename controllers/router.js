@@ -156,7 +156,8 @@ router.get('/user/:id', function(req, res){
 router.post('/messagestore', function(req, res){
   var Msg = {
     message: req.body.msg,
-    user: req.session.passport.user
+    user: req.session.passport.user,
+    username: req.body.username
   };
 
   var newMsg = new Message(Msg);
