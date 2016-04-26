@@ -84,11 +84,12 @@ body{
     display: block;
     opacity: 1;
 }
+ /*Footer section*/
 
 #footer-bottom {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: red;
+  background-color: #e60000;
 }
 
 #footer-bottom p {
