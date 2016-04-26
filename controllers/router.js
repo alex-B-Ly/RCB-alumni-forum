@@ -5,6 +5,7 @@ var router = express.Router();
 
 // MODELS
 var User = require('../models/user.js');
+var Message = require('../models/message.js');
 
 // HOMEPAGE
 router.get('/', function(req, res){
@@ -36,7 +37,8 @@ router.post('/login', function(req, res, next){
       req.login(user, function(err){
         var userInfo = {
           firstName: user.firstName,
-          lastName: user.lastName
+          lastName: user.lastName,
+          id: user._id
         }
         res.send(userInfo);  
       });
@@ -135,19 +137,32 @@ router.get('/user/:id', function(req, res){
   });
 });
 
-// MESSAGE
-router.get('/message', function(req, res){
-  console.log('session: ', req.session);
-  User.findOne({_id: req.session.passport.user}, function(err, user){
+// GET MESSAGES
+router.get('/getmessages', function(req, res){
+  Message.find({}, function(err, msg){
     if(err){throw err}
 
-    var userInfo = {
-      firstName: user.firstName,
-      lastName: user.lastName
-    }
+    res.send(msg);
+  });
+});
 
-    res.send(userInfo);
-  })
+// MESSAGE STORE
+router.post('/messagestore', function(req, res){
+  var Msg = {
+    message: req.body.msg,
+    user: req.session.passport.user,
+    username: req.body.username
+  };
+
+  var newMsg = new Message(Msg);
+
+  newMsg.save(function(err, doc){
+    if(err){
+      throw err
+    }else{
+      console.log(doc);
+    }
+  });
 });
 
 module.exports = router;

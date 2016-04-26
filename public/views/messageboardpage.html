@@ -43,8 +43,11 @@
                     </div>                                    
                   </li>
                 </ul> -->
-                <ul>
-                  <li ng-repeat="message in newMessages">{{ message.user }} says: {{ message.msg }}</li>
+                <ul id="messageList">
+                  <li ng-repeat="message in newMessages">
+                    <p class="messageUser">{{ message.user }}:</p>
+                    <p class="message">{{ message.msg }}</p>
+                  </li>
                 </ul>
               </div>
               <div class="panel-footer">
