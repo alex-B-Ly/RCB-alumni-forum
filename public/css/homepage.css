@@ -184,7 +184,7 @@ body{
 }
 
 /* MESSAGES */
-.messageList{
+#messageList{
   list-style-type: none;
   margin: 0;
   padding: 0 10px;

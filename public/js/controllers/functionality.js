@@ -83,9 +83,15 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
 }]);
 
 // SIDEBAR AND MESSAGE CONTROLLER
-rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 'socket', function($rootScope, $scope, $http, $state, socket){
+rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', '$timeout', 'socket', function($rootScope, $scope, $http, $state, $timeout, socket){
   $scope.students = [];
   $scope.newMessages = [];
+
+   // MESSAGE SCROLL FUNCTION
+  function messageScroll(){
+    var list = document.getElementById('messageList');
+    list.scrollTop = list.scrollHeight;
+  }
 
   $http({
     url:'/getstudents',
@@ -110,6 +116,9 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
       }
       $scope.newMessages.push(message);
     }
+    $timeout(function(){
+      messageScroll();
+    }, 0, false);
   })
 
   $scope.profileModal = function(){
@@ -143,6 +152,7 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
 
   socket.on('spreadMessage', function(data){
     $scope.newMessages.push(data);
+    messageScroll();
   });
 
 }]);
