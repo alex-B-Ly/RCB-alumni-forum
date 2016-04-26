@@ -152,7 +152,9 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
 
   socket.on('spreadMessage', function(data){
     $scope.newMessages.push(data);
-    messageScroll();
+    $timeout(function(){
+      messageScroll();
+    }, 2000, false);
   });
 
 }]);
