@@ -86,19 +86,28 @@ rcb.controller('navController', ['$rootScope', '$scope', '$http', '$state', func
 rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', '$timeout', 'socket', function($rootScope, $scope, $http, $state, $timeout, socket){
   $scope.students = [];
   $scope.newMessages = [];
+  $scope.listScrolled = false;
+
+    // SCROLL CHECK
+  function bindScrollCheck(){
+    var msgList = document.getElementById('messageList');
+    angular.element(msgList).bind('scroll', function(){
+      $scope.listScrolled = true;
+    });
+  }
 
    // MESSAGE SCROLL FUNCTION
   function messageScroll(){
-    var list = document.getElementById('messageList');
-    list.scrollTop = list.scrollHeight;
+    if(!$scope.listScrolled){
+      var list = document.getElementById('messageList');
+      list.scrollTop = list.scrollHeight;
+    }
   }
 
   $http({
     url:'/getstudents',
     method:'GET'
   }).then(function(result){
-    console.log($rootScope.currentUser);
-    console.log($rootScope.currentUserId);
     for(var i=0; i<result.data.length; i++){
       $scope.students.push(result.data[i]);
     }
@@ -108,7 +117,6 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     url:'/getmessages',
     method:'GET'
   }).then(function(result){
-    // TODO Manipulate data and prepend to message list
     for(var i=0; i<result.data.length; i++){
       var message={
         user: result.data[i].username,
@@ -119,6 +127,9 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     $timeout(function(){
       messageScroll();
     }, 0, false);
+    $timeout(function(){
+      bindScrollCheck();
+    }, 3000, false)
   })
 
   $scope.profileModal = function(){
@@ -148,11 +159,18 @@ rcb.controller('sidebarController', ['$rootScope', '$scope', '$http', '$state', 
     });
 
     $scope.message = "";
+
+    $timeout(function(){
+      var list = document.getElementById('messageList');
+      list.scrollTop = list.scrollHeight;
+    }, 0, false);
   }
 
   socket.on('spreadMessage', function(data){
     $scope.newMessages.push(data);
-    messageScroll();
+    $timeout(function(){
+      messageScroll();
+    }, 1000, false);
   });
 
 }]);
