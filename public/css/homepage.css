@@ -182,6 +182,12 @@ body{
 
 .purpose h2 {
   color: red;
+  font-size: 2.5em;
+  
+}
+
+.purpose p {
+  font-size: 1.3em;
 }
    
 /* FEATURES SECTION */
@@ -193,6 +199,11 @@ body{
 
 .features h2 {
   color: red;
+  font-size: 2.5em;
+}
+
+.features p {
+  font-size: 1.3em;
 }
 
 /* MESSAGES */
