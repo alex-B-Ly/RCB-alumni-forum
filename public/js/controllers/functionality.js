@@ -3,7 +3,7 @@ var rcb = angular.module('RCBmessenger');
 
 
 rcb.factory('socket', ['$rootScope', function($rootScope) {
-  var socket = io('http://localhost:8080');
+  var socket = io(window.location.origin);
 
   return {
     on: function(eventName, callback){
