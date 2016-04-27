@@ -61,6 +61,7 @@
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <p>{{ profJobTitle }}</p>
             <span>Skills: </span>
+            <br>
             <span class=" label label-info" ng-repeat="(index, skill) in userSkills track by $index">{{ skill }}<br ng:show="(index + 1)%5==0"/></span>
             <br>          
           </center>
