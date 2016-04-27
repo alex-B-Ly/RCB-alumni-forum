@@ -112,9 +112,9 @@ body{
 }
 
 .header {
-  text-decoration: underline;
-  font-weight: bold;
-  color: red;
+ 
+  font-size: 2.5em;
+  color: #e60000;
 }
 
 .skills  {
@@ -245,4 +245,5 @@ body{
   color:white;
   background-color: #e60000;
 }
+
 

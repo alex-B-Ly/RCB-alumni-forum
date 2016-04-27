@@ -21,28 +21,6 @@
             <div class="panel panel-info">
               <div class="panel-heading">Recent chat history</div>
               <div class="panel-body">
-                <!-- <ul class="student-list">
-                  <li class="student">
-                    <div class="student-body">
-                      <div class="student">
-                        <img src="student image goes here">
-                        <a class="pull-left" data-toggle="modal" data-target="#profileView" href="#">profile modal here</a>
-                        <div class="student-body">
-                            
-                            Donec sit aet ligula enim. Duis vel condimentum massa.
-
-
-                            Duis vel condimentum massa.
-                            Donec sit amet ligula enim. Duis vel condimentum massa.
-                            
-                        </div>
-                        <br>
-                        <small class="text-muted">Chris Campbell | April 2, 2016 at 1:17pm</small>
-                        <hr>
-                      </div>
-                    </div>                                    
-                  </li>
-                </ul> -->
                 <ul id="messageList">
                   <li ng-repeat="message in newMessages">
                     <p class="messageUser">{{ message.user }}:</p>
@@ -79,7 +57,7 @@
         </div>
         <div class="modal-body"> 
           <center>
-            <img class="img-responsive profile-modal" src="{{ profPic }}" alt="Picture of {{ profFirstName }} {{ profLastName }}">
+            <img class="img-responsive img-rounded profile-modal" src="{{ profPic }}" alt="Picture of {{ profFirstName }} {{ profLastName }}">
             <h3 class="username">{{ profFirstName }} {{ profLastName }}</h3>
             <p>{{ profJobTitle }}</p>
             <span>Skills: </span>
