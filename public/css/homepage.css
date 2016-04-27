@@ -226,7 +226,19 @@ body{
   font-size: 1.1em;
 }
 
+
 .well {
   background-color: #dcdcdc;
+}
+
+
+.btn-success {
+  color: white;
+  background-color: red;
+}
+
+.btn-block{
+  color:white;
+  background-color: red;
 }
 
