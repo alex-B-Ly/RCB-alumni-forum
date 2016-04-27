@@ -10,13 +10,15 @@
     <div class="row-fluid">
       <div class="col-sm-3 well text-center">
         <div class="user-wrapper-student">
-          <img src="{{ pic }}" class="img-responsive">
+          <img src="{{ pic }}" class="center-block img-responsive">
           <div class="description">
             <h4>{{ fname }} {{ lname }}</h4>
             <h5> <strong>{{ jobTitle }}</strong></h5>
             <p>{{ jobDesc }}</p>
             <hr>
-            <a ui-sref="messageboardpage" class="btn btn-danger btn-sm">message board</a>
+            
+            <!-- <a ui-sref="messageboardpage" class="btn btn-danger btn-sm">message board</a> -->
+            
           </div>
         </div>
       </div>
@@ -27,9 +29,10 @@
           <hr>
           <!-- Skill Section -->
             <div>
-              <ul class="skills">
-                Skills
-                <li ng-repeat="skill in skills track by $index">{{ skill }}</li>
+            <h3 class="skills">Skills:</h3>
+              <ul>
+                <li ng-repeat="skill in skills track by $index">
+                {{ skill }} </li>
               </ul>
             </div>
           <hr>

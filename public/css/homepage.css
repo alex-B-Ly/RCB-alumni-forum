@@ -100,7 +100,7 @@ body{
 /*studentProfilePage*/
 
 .bio {
-  color: red;
+  color: #e60000;
 }
 
 .git {
@@ -113,9 +113,9 @@ body{
   color: red;
 }
 
-.skills {
-  font-weight: bold;
-  color:red;
+.skills  {
+  
+  color: #e60000;
 }
 
 /* Profile Edit Page */
