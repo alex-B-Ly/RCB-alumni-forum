@@ -35,6 +35,10 @@ body{
   
 }
 
+/*.navbar button {
+  background-color: #dcdcdc;
+}*/
+
 .main-link,
 .main-link:hover,
 .main-link:link{
@@ -100,22 +104,31 @@ body{
 /*studentProfilePage*/
 
 .bio {
-  color: red;
+  color: #e60000;
 }
 
 .git {
   color: red;
 }
 
-.header {
-  text-decoration: underline;
-  font-weight: bold;
-  color: red;
+.header1 {
+ 
+  font-size: 2.5em;
+  color: #e60000;
 }
 
-.skills {
-  font-weight: bold;
-  color:red;
+.header {
+  font-size: 1.5em;
+  color: #e60000;
+}
+
+.skills  {
+  
+  color: #e60000;
+}
+
+.skill-lister {
+  font-size: 1.1em;
 }
 
 /* Profile Edit Page */
@@ -127,7 +140,7 @@ body{
 .skills_to_be{
   background: red;
   font-size: 1em;
-  color: #fff;
+  color: #e60000;
   padding: 3px;
   margin-right: 5px;
 }
@@ -227,12 +240,23 @@ body{
 }
 
 
-.btn-success {
+.well {
+  background-color: #dcdcdc;
+}
+
+
+.btn-default {
   color: white;
-  background-color: red;
+  background-color: #e60000;
 }
 
 .btn-block{
   color:white;
-  background-color: red;
+  background-color: #e60000;
 }
+
+.bio-pee {
+  font-size: 1.3em;
+}
+
+
