@@ -35,6 +35,10 @@ body{
   
 }
 
+/*.navbar button {
+  background-color: #dcdcdc;
+}*/
+
 .main-link,
 .main-link:hover,
 .main-link:link{
@@ -232,13 +236,13 @@ body{
 }
 
 
-.btn-success {
+.btn-default {
   color: white;
-  background-color: red;
+  background-color: #e60000;
 }
 
 .btn-block{
   color:white;
-  background-color: red;
+  background-color: #e60000;
 }
 
