@@ -2,7 +2,7 @@
   <div class="container" ng-controller="profileController">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="header">RCB User Profile </h2>
+        <h2 class="header1">RCB User Profile </h2>
         <br>
       </div>
     </div>
@@ -25,13 +25,13 @@
       <div class="col-sm-9 user-wrapper">
         <div class="description">
           <h3 class="bio">Biography:</h3>
-          <p>{{ bio }}</p>
+          <p class="bio-pee">{{ bio }}</p>
           <hr>
           <!-- Skill Section -->
             <div>
             <h3 class="skills">Skills:</h3>
               <ul>
-                <li ng-repeat="skill in skills track by $index">
+                <li class="skill-lister" ng-repeat="skill in skills track by $index">
                 {{ skill }} </li>
               </ul>
             </div>
