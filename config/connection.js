@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
-var db = 'mongodb://localhost/rcb_alumni_db';
+console.log("This ran");
+console.log(process.env.MONGODB_URI);
+var db = process.env.MONGODB_URI;
+
 
 module.exports = mongoose.connect(db);

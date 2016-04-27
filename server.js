@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
@@ -5,6 +6,7 @@ var session = require('express-session');
 var passport = require('passport');
 var db = require('./config/connection.js');
 var PORT = process.env.PORT || 8080;
+
 
 var app = express();
 var server = require('http').Server(app);
