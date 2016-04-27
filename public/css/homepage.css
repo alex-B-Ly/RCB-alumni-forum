@@ -84,6 +84,18 @@ body{
     display: block;
     opacity: 1;
 }
+ /*Footer section*/
+
+#footer-bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #e60000;
+}
+
+#footer-bottom p {
+  color: white;
+  font-size: 1.3em;
+}
 
 /*studentProfilePage*/
 
@@ -171,16 +183,28 @@ body{
 
 .purpose h2 {
   color: red;
+  font-size: 2.5em;
+  
+}
+
+.purpose p {
+  font-size: 1.3em;
 }
    
 /* FEATURES SECTION */
 
 .features {
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .features h2 {
   color: red;
+  font-size: 2.5em;
+}
+
+.features p {
+  font-size: 1.3em;
 }
 
 /* MESSAGES */
@@ -202,3 +226,13 @@ body{
   font-size: 1.1em;
 }
 
+
+.btn-success {
+  color: white;
+  background-color: red;
+}
+
+.btn-block{
+  color:white;
+  background-color: red;
+}
